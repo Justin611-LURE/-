@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SWTEST3.0 宏插件｜JUSTIN</title>
+  <meta name="description" content="SWTEST3.0——SOLIDWORKS 工程图一键出图、模板批量替换、技术要求库与装配工具。3 分钟完成安装，效率+规范双提升。" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>html{scroll-behavior:smooth}</style>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-white via-slate-50 to-white text-slate-900 antialiased">
+  <!-- 顶部导航 -->
+  <header class="sticky top-0 z-50 backdrop-blur bg-white/70 border-b border-slate-200/60">
+    <div class="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
+      <a href="#home" class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-2xl bg-slate-900 text-white grid place-items-center">✨</div>
+        <div>
+          <h1 class="text-lg font-bold tracking-tight">SWTEST3.0</h1>
+          <p class="text-xs text-slate-500 -mt-0.5">SOLIDWORKS 工程图自动化工具集</p>
+        </div>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm text-slate-600">
+        <a href="#features" class="hover:text-slate-900">核心功能</a>
+        <a href="#install" class="hover:text-slate-900">安装说明</a>
+        <a href="#usage" class="hover:text-slate-900">使用手册</a>
+        <a href="#demos" class="hover:text-slate-900">功能演示</a>
+        <a href="#faq" class="hover:text-slate-900">常见问题</a>
+        <a href="#contact" class="hover:text-slate-900">联系与支持</a>
+      </nav>
+      <div class="hidden md:flex items-center gap-3">
+      <a href="SWTEST3.0_v3.0.0.zip" class="download-btn inline-flex items-center gap-2 rounded-2xl px-4 py-2 bg-slate-900 text-white hover:shadow-lg hover:-translate-y-0.5 transition" download>⬇ 立即安装</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 英雄区 -->
+  <section id="home" class="relative overflow-hidden">
+    <div class="mx-auto max-w-7xl px-6 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <div class="inline-flex items-center gap-2 rounded-full bg-slate-900 text-white px-3 py-1 text-xs">✅ 企业统一制图 · 一键出图</div>
+        <h2 class="mt-5 text-4xl md:text-5xl font-bold leading-tight tracking-tight">
+          用 <span class="bg-gradient-to-r from-slate-900 to-slate-600 bg-clip-text text-transparent">SWTEST3.0</span>，让工程图导出 <span class="whitespace-nowrap">变更高效</span>
+        </h2>
+        <p class="mt-6 text-slate-600 text-base md:text-lg leading-7">
+          在 SOLIDWORKS 中一站式完成工程图导出、技术要求插入、批量模板替换与装配处理。统一规范，减少人为错误，显著提升设计团队效率。
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+        <a href="SWTEST3.0_v3.0.0.zip" class="download-btn inline-flex items-center gap-2 rounded-2xl px-5 py-3 bg-slate-900 text-white hover:shadow-lg hover:-translate-y-0.5 transition" download>⬇ 下载与安装</a>
+          <a href="#usage" class="inline-flex items-center gap-2 rounded-2xl px-5 py-3 bg-white border border-slate-200 hover:border-slate-300">▶ 快速上手</a>
+        </div>
+        <dl class="mt-6 grid grid-cols-2 gap-4 text-xs text-slate-500 max-w-lg">
+          <div>
+            <dt class="font-medium text-slate-700">支持版本</dt>
+            <dd class="mt-1">SOLIDWORKS 2019 / 2021 / 2023（推荐 2021+）</dd>
+          </div>
+          <div>
+            <dt class="font-medium text-slate-700">典型场景</dt>
+            <dd class="mt-1">批量工程图出图、模板统一、技术要求标准化</dd>
+          </div>
+        </dl>
+      </div>
+      <div class="aspect-[4/3] rounded-3xl border border-slate-200 shadow-xl overflow-hidden">
+        <img src="e005aa49-481a-4d29-8a0f-f53f8964acce.png" alt="SWTEST3.0 产品预览图" class="object-contain w-full h-full bg-white" />
+      </div>
+    </div>
+  </section>
+
+  <!-- 核心功能 -->
+  <section id="features" class="py-20 bg-white">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="md:flex items-end justify-between gap-10">
+        <div>
+          <p class="text-xs tracking-widest text-slate-500">FEATURES</p>
+          <h3 class="text-3xl md:text-4xl font-bold tracking-tight mt-2">为工程图而生的全栈自动化</h3>
+        </div>
+        <p class="text-slate-600 max-w-2xl mt-4 md:mt-0">SWTEST3.0 聚焦工程图导出、标注与批量处理，支持 PDF / DWG / DXF 导出，内置材料库与技术要求。</p>
+      </div>
+      <div class="mt-10 grid md:grid-cols-3 gap-6">
+        <div class="rounded-3xl border border-slate-200 bg-white p-6">📄 <h4 class="font-semibold mt-2">一键工程图出图</h4><p class="text-slate-600 mt-2 text-sm">自动遍历工程图，导出 PDF / DWG / DXF，并支持合并 PDF 与命名规则控制。</p></div>
+        <div class="rounded-3xl border border-slate-200 bg-white p-6">🧩 <h4 class="font-semibold mt-2">标准化技术要求</h4><p class="text-slate-600 mt-2 text-sm">内置技术要求库，一键插入，减少个人发挥，统一制图风格。</p></div>
+        <div class="rounded-3xl border border-slate-200 bg-white p-6">🧱 <h4 class="font-semibold mt-2">模板批量替换</h4><p class="text-slate-600 mt-2 text-sm">支持模板升级时的批量替换和属性迁移，降低版本升级成本。</p></div>
+        <div class="rounded-3xl border border-slate-200 bg-white p-6">🧮 <h4 class="font-semibold mt-2">BOM 与明细自动处理</h4><p class="text-slate-600 mt-2 text-sm">支持零件识别和 BOM 原则，避免错号、漏号。</p></div>
+        <div class="rounded-3xl border border-slate-200 bg-white p-6">📚 <h4 class="font-semibold mt-2">材料库与符号库</h4><p class="text-slate-600 mt-2 text-sm">可以配置常用材料、符号，减少重复输入。</p></div>
+        <div class="rounded-3xl border border-slate-200 bg-white p-6">⚙ <h4 class="font-semibold mt-2">装配处理工具</h4><p class="text-slate-600 mt-2 text-sm">装配转实体，上色，零件命名管理。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 安装手册（加细化） -->
+  <section id="install" class="py-20 bg-slate-50">
+    <div class="mx-auto max-w-7xl px-6">
+      <h3 class="text-3xl md:text-4xl font-bold tracking-tight">3 分钟完成安装</h3>
+      <ol class="mt-6 list-decimal list-inside space-y-3 text-slate-700">
+        <li><strong>下载并解压安装包：</strong> 建议解压到桌面，保持原有文件夹层级（勿单独解压文件）。</li>
+        <li><strong>移动文件夹：</strong> 将整个解压后的文件夹复制到 <code>D:\</code> 盘根目录（推荐路径更稳定，避免中文/空格路径）。</li>
+        <li><strong>安装依赖工具：</strong> 双击运行 <code>pdftk_free-2.02-...setup.exe</code> 完成 PDF 合并工具安装。安装完成后可在「开始菜单」中看到 PDFtk Free。</li>
+        <li><strong>启动 SOLIDWORKS 并加载宏：</strong>
+          <ul class="list-disc list-inside ml-4 mt-1 space-y-1">
+            <li>打开 SOLIDWORKS → 工具 → 宏 → 载入。</li>
+            <li>选择 <code>D:\SWTEST3.0\SWTEST3.0.swp</code> 或对应的宏主文件。</li>
+            <li>推荐将宏按钮固定到常用工具栏，方便一键执行。</li>
+          </ul>
+        </li>
+        <li><strong>首次运行检查：</strong> 建议在测试工程图上先试运行一遍，确认输出目录、命名规则与公司要求一致，再用于正式项目。</li>
+      </ol>
+
+      <div id="download" class="mt-8 flex gap-3">
+      <a href="SWTEST3.0_v3.0.0.zip" class="download-btn px-5 py-3 bg-slate-900 text-white rounded-2xl" download>⬇ 下载</a>
+        <a href="#" class="video-btn px-5 py-3 bg-white border rounded-2xl">▶ 安装演示视频</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 使用手册 -->
+  <section id="usage" class="py-20 bg-white">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="md:flex items-end justify-between gap-10">
+        <div>
+          <p class="text-xs tracking-widest text-slate-500">USAGE</p>
+          <h3 class="text-3xl md:text-4xl font-bold tracking-tight mt-2">日常使用建议流程</h3>
+        </div>
+        <p class="text-slate-600 max-w-2xl mt-4 md:mt-0">以下步骤对应 SWTEST3.0 中常见功能模块，可根据自身企业的图纸规范进行少量调整。</p>
+      </div>
+      <div class="mt-10 grid md:grid-cols-3 gap-6 text-sm text-slate-700">
+        <div class="rounded-3xl border border-slate-200 bg-slate-50/70 p-6">
+          <div class="text-xs font-semibold text-slate-500">STEP 1</div>
+          <h4 class="mt-2 font-semibold">工程图检查与整理</h4>
+          <ul class="mt-3 space-y-1 list-disc list-inside">
+            <li>确认视图完整、视角统一，确保所有零件编号正确。</li>
+            <li>根据公司标准检查标注单位、小数位数、字体。</li>
+            <li>确保标题栏信息完整（项目号、图号、版本号等）。</li>
+          </ul>
+        </div>
+
+        <div class="rounded-3xl border border-slate-200 bg-slate-50/70 p-6">
+          <div class="text-xs font-semibold text-slate-500">STEP 2</div>
+          <h4 class="mt-2 font-semibold">插入标准技术要求</h4>
+          <ul class="mt-3 space-y-1 list-disc list-inside">
+            <li>从 SWTEST3.0 的技术要求库中选择对应产品类别的模板。</li>
+            <li>一键插入后，根据项目特殊要求增加少量补充条目。</li>
+            <li>避免直接手写长段技术要求，降低个人差异。</li>
+          </ul>
+        </div>
+
+        <div class="rounded-3xl border border-slate-200 bg-slate-50/70 p-6">
+          <div class="text-xs font-semibold text-slate-500">STEP 3</div>
+          <h4 class="mt-2 font-semibold">工程图批量导出</h4>
+          <ul class="mt-3 space-y-1 list-disc list-inside">
+            <li>在 SWTEST3.0 中选择需要导出的工程图文件夹。</li>
+            <li>配置输出格式（PDF/DWG/DXF）、是否合并 PDF 以及命名规则。</li>
+            <li>执行批量导出，完成后可直接交付给制造/外协单位。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 功能演示 -->
+  <section id="demos" class="py-20 bg-slate-50">
+    <div class="mx-auto max-w-7xl px-6">
+      <h3 class="text-3xl md:text-4xl font-bold tracking-tight">功能演示与典型场景</h3>
+      <p class="mt-3 text-slate-600 text-sm md:text-base">以下为 SWTEST3.0 部分功能的实操作演示，便于快速理解工具的使用方式。</p>
+
+      <div class="mt-10 grid md:grid-cols-3 gap-6 text-sm text-slate-700">
+        <div class="rounded-3xl border border-slate-200 bg-white p-4">
+          <h4 class="font-semibold flex items-center gap-2">📄 工程图一键出图</h4>
+          <p class="mt-2 text-slate-600 text-xs">从多张工程图中批量导出 PDF（单页/多页），自动匹配文件名并支持合并。</p>
+          <video class="mt-3 w-full rounded-2xl border border-slate-200 demo-video" controls preload="metadata">
+            <source src="drawing-batch-export.mp4" type="video/mp4">
+            您的浏览器不支持视频标签。
+          </video>
+        </div>
+        <div class="rounded-3xl border border-slate-200 bg-white p-4">
+          <h4 class="font-semibold flex items-center gap-2">🧩 技术要求库应用</h4>
+          <p class="mt-2 text-slate-600 text-xs">通过预设模板插入技术要求，实现不同产品线之间的规范统一。</p>
+          <video class="mt-3 w-full rounded-2xl border border-slate-200 demo-video" controls preload="metadata">
+            <source src="tech-req-insert.mp4" type="video/mp4">
+            您的浏览器不支持视频标签。
+          </video>
+        </div>
+        <div class="rounded-3xl border border-slate-200 bg-white p-4">
+          <h4 class="font-semibold flex items-center gap-2">🧱 模板批量替换</h4>
+          <p class="mt-2 text-slate-600 text-xs">在模板升级时，对既有工程图进行批量替换，统一图幅与样式。</p>
+          <video class="mt-3 w-full rounded-2xl border border-slate-200 demo-video" controls preload="metadata">
+            <source src="template-batch-replace.mp4" type="video/mp4">
+            您的浏览器不支持视频标签。
+          </video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 常见问题 -->
+  <section id="faq" class="py-20 bg-white">
+    <div class="mx-auto max-w-7xl px-6">
+      <h3 class="text-3xl md:text-4xl font-bold tracking-tight">常见问题 FAQ</h3>
+      <div class="mt-8 space-y-5 text-sm text-slate-700">
+        <details class="group rounded-2xl border border-slate-200 bg-slate-50/80 px-4 py-3">
+          <summary class="flex items-center justify-between cursor-pointer select-none">
+            <span>Q1：宏在哪些版本的 SOLIDWORKS 上可以使用？</span>
+            <span class="text-xs text-slate-400 group-open:hidden">展开</span>
+            <span class="text-xs text-slate-400 hidden group-open:inline">收起</span>
+          </summary>
+          <div class="mt-2 text-slate-600">
+            推荐使用 2019 及以上版本。实际测试环境以 2021 为主，如需在更老版本上使用，可以先在测试环境中验证。
+          </div>
+        </details>
+
+        <details class="group rounded-2xl border border-slate-200 bg-slate-50/80 px-4 py-3">
+          <summary class="flex items-center justify-between cursor-pointer select-none">
+            <span>Q2：导出 PDF 时出现乱码 / 字体异常怎么办？</span>
+            <span class="text-xs text-slate-400 group-open:hidden">展开</span>
+            <span class="text-xs text-slate-400 hidden group-open:inline">收起</span>
+          </summary>
+          <div class="mt-2 text-slate-600">
+            请确保 Windows 已安装公司统一的工程图字体，并在 SOLIDWORKS 模板中统一设置字体样式。遇到个别字体不兼容时，建议替换为常见字体（如 Tahoma、SimSun 等）。
+          </div>
+        </details>
+
+        <details class="group rounded-2xl border border-slate-200 bg-slate-50/80 px-4 py-3">
+          <summary class="flex items-center justify-between cursor-pointer select-none">
+            <span>Q3：技术要求库可以自定义吗？</span>
+            <span class="text-xs text-slate-400 group-open:hidden">展开</span>
+            <span class="text-xs text-slate-400 hidden group-open:inline">收起</span>
+          </summary>
+          <div class="mt-2 text-slate-600">
+            可以。技术要求库本质上是一个文本/配置文件，可以根据企业标准进行编辑和扩展。建议以模板的形式提前讨论并锁定，再统一下发到各设计人员电脑中。
+          </div>
+        </details>
+
+        <details class="group rounded-2xl border border-slate-200 bg-slate-50/80 px-4 py-3">
+          <summary class="flex items-center justify-between cursor-pointer select-none">
+            <span>Q4：宏运行失败时，如何排查问题？</span>
+            <span class="text-xs text-slate-400 group-open:hidden">展开</span>
+            <span class="text-xs text-slate-400 hidden group-open:inline">收起</span>
+          </summary>
+          <div class="mt-2 text-slate-600">
+            建议按以下步骤排查：<br />
+            1）确认当前工程图是否已保存，且路径无中文/空格；<br />
+            2）检查输出目录是否有权限写入；<br />
+            3）观察提示信息，如有错误代码，可截图反馈给作者协助分析。
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系与支持 -->
+  <section id="contact" class="py-16 bg-slate-900 text-slate-50">
+    <div class="mx-auto max-w-7xl px-6 grid md:grid-cols-[3fr,2fr] gap-10 items-center">
+      <div>
+        <h3 class="text-3xl md:text-4xl font-bold tracking-tight">联系作者 · 定制化支持</h3>
+        <p class="mt-4 text-sm md:text-base text-slate-300">
+          如需根据贵司图纸规范进行二次开发，或希望将本工具集成到内部 PLM / 图纸流程中，可以通过以下方式联系作者。<br />
+          支持远程调试、现场培训、企业内部培训资料共建等形式。
+        </p>
+        <ul class="mt-6 space-y-2 text-sm text-slate-200">
+          <li>📧 邮箱：<span class="font-mono">example@company.com</span>（示例）</li>
+          <li>📎 支持形式：宏功能定制、批量脚本开发、工程图流程梳理、绘图规范梳理等。</li>
+        </ul>
+      </div>
+      <div class="rounded-3xl bg-slate-800/80 border border-slate-700 p-6">
+        <h4 class="font-semibold flex items-center gap-2">💬 快速说明</h4>
+        <p class="mt-2 text-sm text-slate-300">联系时可简单说明：</p>
+        <ul class="mt-2 text-xs text-slate-300 space-y-1">
+          <li>① 当前 SOLIDWORKS 版本、图纸模板情况</li>
+          <li>② 现有工程图出图流程（谁出图、交付给谁）</li>
+          <li>③ 想解决的主要问题（效率 / 规范 / 人员差异等）</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 简单的弹窗（保留，但目前没有触发） -->
+  <div id="contact-modal" class="fixed inset-0 z-[100] hidden">
+    <div class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+    <div class="relative mx-auto max-w-sm mt-24 rounded-2xl bg-white shadow-2xl p-6">
+      <h3 class="text-lg font-semibold flex items-center gap-2">联系作者信息</h3>
+      <p class="mt-2 text-sm text-slate-600">
+        微信：<span class="font-mono">18068035611</span><br />
+        QQ：<span class="font-mono">564621208</span><br />
+        添加时备注：<span class="font-mono">SWTEST3.0 宏</span>
+      </p>
+      <button id="modal-copy" class="mt-4 w-full rounded-xl bg-slate-900 text-white py-2 text-sm">复制信息</button>
+      <button id="modal-close" class="mt-2 w-full rounded-xl border border-slate-300 py-2 text-sm text-slate-700">关闭</button>
+    </div>
+  </div>
+
+  <!-- 视频全屏弹窗 -->
+  <div id="video-modal" class="fixed inset-0 z-[90] hidden">
+    <div class="absolute inset-0 bg-black/80"></div>
+    <div class="relative mx-auto max-w-4xl mt-10 rounded-2xl bg-black/80 overflow-hidden">
+      <div class="flex justify-between items-center px-4 py-2 text-white text-sm">
+        <span>SWTEST3.0 安装演示</span>
+        <button id="video-close" class="text-xs px-3 py-1 rounded-full bg-white/10 hover:bg-white/20">关闭</button>
+      </div>
+      <div class="relative bg-black">
+        <video id="demo-video" class="w-full h-auto" controls preload="metadata">
+          <source src="demo.mp4" type="video/mp4">
+          <source src="demo.webm" type="video/webm">
+          您的浏览器不支持 HTML5 视频。
+        </video>
+        <div id="video-error" class="hidden absolute inset-0 grid place-items-center">
+          <div class="rounded-xl bg-black/70 text-white p-4 text-center">
+            <p class="font-semibold">视频无法显示（仅有声音）</p>
+            <p class="mt-1 text-sm opacity-80">请使用 H.264/AAC（MP4）或 WebM(VP9/Opus) 编码，或联系作者。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 交互脚本 -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // B) 视频全屏播放
+      const videoModal = document.getElementById('video-modal');
+      const video = document.getElementById('demo-video');
+      const videoError = document.getElementById('video-error');
+      const btnVideoClose = document.getElementById('video-close');
+
+      function openVideo(){
+        videoError.classList.add('hidden');
+        videoModal.classList.remove('hidden');
+        if (video.requestFullscreen) { try { video.requestFullscreen(); } catch(e) {} }
+        video.play().catch(()=>{});
+      }
+      function closeVideo(){
+        video.pause(); video.currentTime = 0;
+        if (document.fullscreenElement) { try { document.exitFullscreen(); } catch(e) {} }
+        videoModal.classList.add('hidden'); videoError.classList.add('hidden');
+      }
+      function buildPoster(type){
+        let svg='';
+        if(type==='export'){
+          svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 120'>
+            <rect width='200' height='120' fill='#e5e7eb'/>
+            <rect x='22' y='18' rx='8' width='68' height='86' fill='#cbd5e1'/>
+            <rect x='110' y='22' rx='10' width='68' height='78' fill='#f8fafc'/>
+            <path d='M70 60h60' stroke='#334155' stroke-width='4' stroke-linecap='round'/>
+            <path d='M110 52l12 8-12 8' fill='none' stroke='#334155' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/>
+            <circle cx='100' cy='60' r='26' fill='none' stroke='#64748b' stroke-width='4' stroke-dasharray='6 6'/>
+            <rect x='144' y='83' rx='6' width='40' height='20' fill='#0f172a'/>
+            <text x='164' y='98' font-size='12' text-anchor='middle' fill='white'>PDF</text>
+          </svg>`;
+        } else if(type==='template'){
+          svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 120'>
+            <rect width='200' height='120' fill='#e5e7eb'/>
+            <rect x='30' y='18' rx='10' width='80' height='86' fill='#e2e8f0'/>
+            <rect x='90' y='26' rx='10' width='80' height='86' fill='#f8fafc'/>
+            <path d='M70 60h60' stroke='#334155' stroke-width='4' stroke-linecap='round'/>
+            <path d='M110 52l12 8-12 8' fill='none' stroke='#334155' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/>
+            <circle cx='100' cy='60' r='26' fill='none' stroke='#64748b' stroke-width='4' stroke-dasharray='6 6'/>
+          </svg>`;
+        } else { // assembly
+          svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 120'>
+            <rect width='200' height='120' fill='#e5e7eb'/>
+            <circle cx='80' cy='60' r='26' fill='#e2e8f0'/>
+            <circle cx='130' cy='60' r='26' fill='#f8fafc'/>
+            <path d='M80 60h50' stroke='#334155' stroke-width='4' stroke-linecap='round'/>
+            <circle cx='80' cy='60' r='14' fill='none' stroke='#64748b' stroke-width='4'/>
+            <circle cx='130' cy='60' r='14' fill='none' stroke='#64748b' stroke-width='4'/>
+          </svg>`;
+        }
+        return 'data:image/svg+xml;utf8,'+encodeURIComponent(svg);
+      }
+
+      // C) 给 demo 视频添加占位图（如果需要）
+      document.querySelectorAll('.demo-video').forEach((v,idx) => {
+        if(!v.getAttribute('poster')){
+          const type = idx===0?'export':(idx===1?'template':'assembly');
+          v.setAttribute('poster', buildPoster(type));
+        }
+      });
+
+      // 如果有“安装演示视频”按钮，点击后打开 videoModal
+      document.querySelectorAll('.video-btn').forEach(btn => {
+        btn.addEventListener('click', e => {
+          e.preventDefault();
+          openVideo();
+        });
+      });
+
+      btnVideoClose.addEventListener('click', closeVideo);
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && !videoModal.classList.contains('hidden')) closeVideo();
+      });
+    });
+  </script>
+</body>
+</html>

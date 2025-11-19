@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>治具工具集 · 功能入口</title>
+  <title>内部工具集 · 功能入口</title>
   <style>
     :root{
       --bg1:#667eea;
       --bg2:#764ba2;
-      --card-bg:#ffffff;
       --text:#111827;
       --muted:#6b7280;
       --accent:#4f46e5;
@@ -29,7 +28,7 @@
     }
     .wrap{
       width:100%;
-      max-width:1080px;
+      max-width:1120px;
       background:rgba(255,255,255,0.96);
       border-radius:var(--radius-xl);
       box-shadow:var(--shadow);
@@ -42,8 +41,8 @@
       position:absolute;
       inset:-40%;
       background:
-        radial-gradient(circle at 0% 0%,rgba(96,165,250,0.1),transparent 60%),
-        radial-gradient(circle at 100% 100%,rgba(244,114,182,0.1),transparent 60%);
+        radial-gradient(circle at 0% 0%,rgba(96,165,250,0.12),transparent 60%),
+        radial-gradient(circle at 100% 100%,rgba(244,114,182,0.12),transparent 60%);
       opacity:0.8;
       pointer-events:none;
     }
@@ -83,7 +82,7 @@
       position:relative;
       z-index:1;
       display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
+      grid-template-columns:repeat(2,minmax(0,1fr));
       gap:18px;
       margin-top:10px;
     }
@@ -164,21 +163,21 @@
   <div class="wrap">
     <header>
       <div>
-        <h1>治具工具集 · 功能入口</h1>
-        <p>选择下方功能卡片，点击后将在新标签页打开对应的系统页面。</p>
+        <h1>内部工具集 · 功能入口</h1>
+        <p>选择下方功能卡片，点击后将在新标签页打开对应的系统 / 页面。</p>
       </div>
       <div>
-        <span class="tag">内部使用 · 本地 HTML 工具集</span>
+        <span class="tag">本地 & 在线 HTML 工具集</span>
       </div>
     </header>
 
     <section class="grid">
-      <!-- 功能 1：单模治具下单查询系统 -->
+      <!-- 功能 1：单模治具 -->
       <a class="tile" href="danmo.html" target="_blank" rel="noopener">
         <span class="badge">功能 ① · 单模治具</span>
         <div>
           <h2>单模治具下单查询系统</h2>
-          <p>用于查询和统计单模治具下单情况，支持按设计人员、图纸分类、时间等维度筛选。</p>
+          <p>查询和统计单模治具下单情况，支持按设计人员、图纸分类、时间等维度筛选。</p>
         </div>
         <div class="tile-footer">
           <span>点击打开系统</span>
@@ -186,8 +185,8 @@
         </div>
       </a>
 
-      <!-- 功能 2：OB 治具下单查询系统 -->
-      <a class="tile" href="ob.html" target="_blank" rel="noopener">
+      <!-- 功能 2：OB 治具 -->
+      <a class="tile" href="OB.html" target="_blank" rel="noopener">
         <span class="badge">功能 ② · OB 治具</span>
         <div>
           <h2>OB治具下单查询系统</h2>
@@ -199,16 +198,29 @@
         </div>
       </a>
 
-      <!-- 功能 3：发包文档分离 / 文件一键转移复制 -->
-     <a class="tile" href="fabao.html" target="_blank" rel="noopener">
+      <!-- 功能 3：发包文档分离 -->
+      <a class="tile" href="fabao.html" target="_blank" rel="noopener">
         <span class="badge">功能 ③ · 发包文件</span>
         <div>
-          <h2>发包文件一键转移复制</h2>
-          <p>根据规则自动筛选、转移、复制发包文件，支持目录多选与拖拽操作。</p>
+          <h2>发包文档分离工具</h2>
+          <p>根据规则自动筛选、转移、复制发包文件，支持目录选择与批量操作。</p>
         </div>
         <div class="tile-footer">
           <span>点击打开工具</span>
           <span class="icon">⚙</span>
+        </div>
+      </a>
+
+      <!-- 功能 4：SWTEST3.0 页面 -->
+      <a class="tile" href="SW3.0.html" target="_blank" rel="noopener">
+        <span class="badge">功能 ④ · SW 工程图</span>
+        <div>
+          <h2>SWTEST3.0 宏插件</h2>
+          <p>SOLIDWORKS 工程图自动化工具集：批量出图、模板批量替换、技术要求库与装配处理等一站式功能。</p>
+        </div>
+        <div class="tile-footer">
+          <span>打开 SWTEST3.0 页面</span>
+          <span class="icon">★</span>
         </div>
       </a>
     </section>
