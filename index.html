@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>治具工具集 · 功能入口</title>
+  <style>
+    :root{
+      --bg1:#667eea;
+      --bg2:#764ba2;
+      --card-bg:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --accent:#4f46e5;
+      --accent-soft:#eef2ff;
+      --shadow:0 18px 40px rgba(15,23,42,0.25);
+      --radius-xl:20px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      min-height:100vh;
+      font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+      background:linear-gradient(135deg,var(--bg1),var(--bg2));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      color:var(--text);
+    }
+    .wrap{
+      width:100%;
+      max-width:1080px;
+      background:rgba(255,255,255,0.96);
+      border-radius:var(--radius-xl);
+      box-shadow:var(--shadow);
+      padding:26px 26px 30px;
+      position:relative;
+      overflow:hidden;
+    }
+    .wrap::before{
+      content:"";
+      position:absolute;
+      inset:-40%;
+      background:
+        radial-gradient(circle at 0% 0%,rgba(96,165,250,0.1),transparent 60%),
+        radial-gradient(circle at 100% 100%,rgba(244,114,182,0.1),transparent 60%);
+      opacity:0.8;
+      pointer-events:none;
+    }
+    header{
+      position:relative;
+      z-index:1;
+      margin-bottom:20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:16px;
+    }
+    header h1{
+      font-size:26px;
+      font-weight:800;
+      letter-spacing:.03em;
+      color:#111827;
+      margin-bottom:6px;
+    }
+    header p{
+      font-size:13px;
+      color:var(--muted);
+    }
+    .tag{
+      background:var(--accent-soft);
+      color:var(--accent);
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:600;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      border:1px solid #e0e7ff;
+    }
+    .grid{
+      position:relative;
+      z-index:1;
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:18px;
+      margin-top:10px;
+    }
+    @media (max-width:900px){
+      .grid{grid-template-columns:1fr;gap:14px}
+      header{flex-direction:column;}
+    }
+    .tile{
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      padding:18px 16px;
+      border-radius:18px;
+      background:linear-gradient(145deg,#ffffff,#f3f4ff);
+      border:1px solid #e5e7eb;
+      box-shadow:0 10px 25px rgba(15,23,42,0.08);
+      text-decoration:none;
+      color:inherit;
+      position:relative;
+      overflow:hidden;
+      transition:
+        transform .16s ease,
+        box-shadow .16s ease,
+        border-color .16s ease,
+        background .16s ease;
+    }
+    .tile:hover{
+      transform:translateY(-4px);
+      box-shadow:0 20px 45px rgba(15,23,42,0.18);
+      border-color:var(--accent);
+      background:linear-gradient(145deg,#fff,#eef2ff);
+    }
+    .tile span.badge{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      font-size:11px;
+      padding:4px 9px;
+      border-radius:999px;
+      background:rgba(79,70,229,0.06);
+      color:var(--accent);
+      border:1px solid rgba(79,70,229,0.18);
+      margin-bottom:10px;
+      font-weight:600;
+    }
+    .tile h2{
+      font-size:18px;
+      margin-bottom:6px;
+    }
+    .tile p{
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.5;
+    }
+    .tile-footer{
+      margin-top:14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      font-size:12px;
+      color:var(--accent);
+      font-weight:600;
+    }
+    .tile-footer .icon{
+      width:28px;
+      height:28px;
+      border-radius:999px;
+      border:1px solid rgba(79,70,229,0.25);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:15px;
+      background:#eef2ff;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>治具工具集 · 功能入口</h1>
+        <p>选择下方功能卡片，点击后将在新标签页打开对应的系统页面。</p>
+      </div>
+      <div>
+        <span class="tag">内部使用 · 本地 HTML 工具集</span>
+      </div>
+    </header>
+
+    <section class="grid">
+      <!-- 功能 1：单模治具下单查询系统 -->
+      <a class="tile" href="danmo.html" target="_blank" rel="noopener">
+        <span class="badge">功能 ① · 单模治具</span>
+        <div>
+          <h2>单模治具下单查询系统</h2>
+          <p>用于查询和统计单模治具下单情况，支持按设计人员、图纸分类、时间等维度筛选。</p>
+        </div>
+        <div class="tile-footer">
+          <span>点击打开系统</span>
+          <span class="icon">➜</span>
+        </div>
+      </a>
+
+      <!-- 功能 2：OB 治具下单查询系统 -->
+      <a class="tile" href="ob.html" target="_blank" rel="noopener">
+        <span class="badge">功能 ② · OB 治具</span>
+        <div>
+          <h2>OB治具下单查询系统</h2>
+          <p>用于 OB 系列治具的下单记录分析，可配合 Excel 数据进行统计和导出。</p>
+        </div>
+        <div class="tile-footer">
+          <span>点击打开系统</span>
+          <span class="icon">➜</span>
+        </div>
+      </a>
+
+      <!-- 功能 3：发包文档分离 / 文件一键转移复制 -->
+     <a class="tile" href="fabao.html" target="_blank" rel="noopener">
+        <span class="badge">功能 ③ · 发包文件</span>
+        <div>
+          <h2>发包文件一键转移复制</h2>
+          <p>根据规则自动筛选、转移、复制发包文件，支持目录多选与拖拽操作。</p>
+        </div>
+        <div class="tile-footer">
+          <span>点击打开工具</span>
+          <span class="icon">⚙</span>
+        </div>
+      </a>
+    </section>
+  </div>
+</body>
+</html>
