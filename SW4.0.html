@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SW4.0 宏插件｜JUSTIN</title>
+  <meta name="description" content="SW4.0——SOLIDWORKS 工程图一键出图、模板批量替换、技术要求库与装配工具。3 分钟完成安装，效率+规范双提升。" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>html{scroll-behavior:smooth}</style>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-white via-slate-50 to-white text-slate-900 antialiased">
+  <!-- 顶部更新公告 -->
+  <div id="update-bar" class="bg-amber-50 border-b border-amber-200 text-amber-900 text-sm">
+    <div class="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between gap-3">
+      <p class="flex-1">
+        <span class="font-semibold mr-2">更新公告（SW4.0）：</span>
+        1. 更新了中英文注释。2. 解除了重命名时间限制。
+      </p>
+      <button id="update-close" class="shrink-0 px-2 text-lg leading-none hover:text-amber-700" aria-label="关闭公告">×</button>
+    </div>
+  </div>
+
+  <!-- 顶部导航 -->
+  <header class="sticky top-0 z-50 backdrop-blur bg-white/70 border-b border-slate-200/60">
+    <div class="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
+      <a href="#home" class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-2xl bg-slate-900 text-white grid place-items-center">✨</div>
+        <div>
+          <p class="text-xs tracking-widest text-slate-500">JUSTIN · SOLIDWORKS</p>
+          <h1 class="text-lg font-bold tracking-tight">SW4.0 宏插件</h1>
+        </div>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm text-slate-600">
+        <a href="#features" class="hover:text-slate-900">核心功能</a>
+        <a href="#install" class="hover:text-slate-900">安装手册</a>
+        <a href="#usage" class="hover:text-slate-900">使用手册</a>
+        <a href="#demos" class="hover:text-slate-900">功能演示</a>
+        <a href="#faq" class="hover:text-slate-900">常见问题</a>
+        <a href="#contact" class="hover:text-slate-900">联系与支持</a>
+      </nav>
+      <div class="hidden md:flex items-center gap-3">
+        <!-- 顶部“立即安装”按钮：直接下载 RAR -->
+        <a href="SWTEST4.0_v4.0.0.rar"
+           class="download-btn inline-flex items-center gap-2 rounded-2xl px-4 py-2 bg-slate-900 text-white hover:shadow-lg hover:-translate-y-0.5 transition"
+           download>⬇ 立即安装</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 英雄区 -->
+  <section id="home" class="relative overflow-hidden">
+    <div class="mx-auto max-w-7xl px-6 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <div class="inline-flex items-center gap-2 rounded-full bg-slate-900 text-white px-3 py-1 text-xs">✅ 企业统一制图 · 一键出图</div>
+        <h2 class="mt-5 text-4xl md:text-5xl font-bold leading-tight tracking-tight">
+          用 <span class="bg-gradient-to-r from-slate-900 to-slate-500 bg-clip-text text-transparent">SW4.0</span>，让工程图导出 <span class="whitespace-nowrap">变更高效</span>
+        </h2>
+        <p class="mt-6 text-slate-600 text-base md:text-lg leading-7">
+          在 SOLIDWORKS 中一站式完成工程图导出、技术要求插入、批量模板替换与装配处理。统一规范，减少人为错误，显著提升设计团队效率。
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <!-- 首页大按钮：直接下载 RAR -->
+          <a href="SWTEST4.0_v4.0.0.rar"
+             class="download-btn inline-flex items-center gap-2 rounded-2xl px-5 py-3 bg-slate-900 text-white hover:shadow-lg hover:-translate-y-0.5 transition"
+             download>⬇ 下载与安装</a>
+          <a href="#usage" class="inline-flex items-center gap-2 rounded-2xl px-5 py-3 bg-white border border-slate-200 hover:border-slate-300">▶ 快速上手</a>
+        </div>
+      </div>
+      <div class="aspect-[4/3] rounded-3xl border border-slate-200 shadow-xl overflow-hidden">
+        <img src="e005aa49-481a-4d29-8a0f-f53f8964acce.png" alt="SW4.0 产品预览图" class="object-contain w-full h-full bg-white" />
+      </div>
+    </div>
+  </section>
+
+  <!-- 核心功能 -->
+  <section id="features" class="py-20 bg-white">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="md:flex items-end justify-between gap-10">
+        <div>
+          <p class="text-xs tracking-widest text-slate-500">FEATURES</p>
+          <h3 class="text-3xl md:text-4xl font-bold tracking-tight mt-2">为工程图而生的全栈自动化</h3>
+        </div>
+        <p class="text-slate-600 max-w-2xl mt-4 md:mt-0">SW4.0 聚焦工程图导出、标注与批量处理，支持 PDF / DWG / DXF 导出，内置材料库与技术要求。</p>
+      </div>
+      <div class="mt-10 grid md:grid-cols-3 gap-6">
+        <div class="rounded-3xl border border-slate-200 bg-white p-6">📄 <h4 class="font-semibold mt-2">导图与模板</h4><p class="text-slate-600 mt-2 text-sm">批量导出/合并 PDF，一键模板替换。</p></div>
+        <div class="rounded-3xl border border-slate-200 bg-white p-6">📏 <h4 class="font-semibold mt-2">工程图标注</h4><p class="text-slate-600 mt-2 text-sm">常见公差/材料库，技术要求一键插入。</p></div>
+        <div class="rounded-3xl border border-slate-200 bg-white p-6">⚙ <h4 class="font-semibold mt-2">装配体工具</h4><p class="text-slate-600 mt-2 text-sm">装配转实体，上色，零件命名管理。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 安装手册（加细化） -->
+  <section id="install" class="py-20 bg-slate-50">
+    <div class="mx-auto max-w-7xl px-6">
+      <h3 class="text-3xl md:text-4xl font-bold tracking-tight">3 分钟完成安装</h3>
+      <ol class="mt-6 list-decimal list-inside space-y-3 text-slate-700">
+        <li><strong>下载并解压安装包：</strong> 建议解压到桌面，保持原有文件夹层级（勿单独解压文件）。</li>
+        <li><strong>移动文件夹：</strong> 将整个解压后的文件夹复制到 <code>D:\</code> 盘根目录（推荐路径更稳定，避免中文/空格路径）。</li>
+        <li><strong>安装依赖工具：</strong> 双击运行 <code>pdftk_free-2.02-win-setup.exe</code> 完成 PDF 合并工具安装。安装完成后可在「开始菜单」中看到 PDFtk Free。</li>
+        <li><strong>启动 SOLIDWORKS 并加载宏：</strong>
+          <ul class="list-disc list-inside ml-6 space-y-1">
+            <li>打开 SOLIDWORKS → 菜单栏 → <em>工具</em> → <em>自定义 (Customize)</em>。</li>
+            <li>切换到「命令」页签，在左侧类别选择「宏」。</li>
+            <li>将「宏」图标拖到你常用的工具栏或命令管理器功能区。</li>
+          </ul>
+        </li>
+        <li><strong>绑定宏文件：</strong> 右键新添加的宏图标 → <em>指定宏...</em> → 浏览到安装包目录，选择 <strong>打开窗体2.mainpart</strong> 文件（必须选择类型为“打开窗体”的入口）。</li>
+        <li><strong>测试运行：</strong> 点击宏图标，应弹出 SW4.0 主界面窗口。若能成功打开，即安装完成。</li>
+        <li><strong>（可选）设置快捷键：</strong> 工具 → 自定义 → 键盘，在搜索框输入「宏」，为 SW4.0 宏绑定一个常用快捷键（如 Ctrl+Shift+S）。</li>
+        <li><strong>（推荐）固定到命令面板：</strong> 在命令管理器新增一个「SW4.0」分组，把宏图标固定在显眼位置，方便日常使用。</li>
+      </ol>
+      <div id="download" class="mt-8 flex gap-3">
+        <!-- 安装区“下载”按钮：直接下载 RAR -->
+        <a href="SWTEST4.0_v4.0.0.rar"
+           class="download-btn px-5 py-3 bg-slate-900 text-white rounded-2xl"
+           download>⬇ 下载</a>
+        <a href="#" class="video-btn px-5 py-3 bg-white border rounded-2xl">▶ 安装演示视频</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 使用手册 -->
+  <section id="usage" class="py-20 bg-white">
+    <div class="mx-auto max-w-7xl px-6">
+      <h3 class="text-3xl md:text-4xl font-bold tracking-tight">一看就会的操作流</h3>
+      <ul class="mt-6 list-disc list-inside space-y-2 text-slate-700">
+        <li>支持 PDF/DWG/DXF 批量导出与 PDF 合并。</li>
+        <li>模板批量替换，统一公司制图规范。</li>
+        <li>材料与公差库，一键插入常见要求。</li>
+        <li>装配转实体、零件命名、自动出图。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 功能演示（多视频卡片，内置图标封面） -->
+  <section id="demos" class="py-20 bg-gradient-to-b from-slate-50 to-white">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="md:flex items-end justify之间 gap-10">
+        <div>
+          <p class="text-xs tracking-widest text-slate-500">DEMO</p>
+          <h3 class="text-3xl md:text-4xl font-bold tracking-tight mt-2">功能演示视频</h3>
+        </div>
+        <p class="text-slate-600 max-w-2xl mt-4 md:mt-0">点击任意卡片即全屏播放，支持 Esc / 遮罩 / × 按钮关闭。</p>
+      </div>
+
+      <!-- 零件功能 -->
+      <h4 class="mt-10 mb-4 text-xl font-semibold">零件功能</h4>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- 零件改名 -->
+        <button class="feature-video-btn group rounded-2xl overflow-hidden border border-slate-200 bg-white shadow hover:shadow-lg transition text-left"
+                data-mp4="part-rename.mp4" data-webm="" data-poster-type="template">
+          <div class="relative aspect-video bg-gradient-to-br from-slate-100 to-slate-200">
+            <div class="absolute inset-0 grid place-items-center">
+              <span class="inline-grid place-items-center w-14 h-14 rounded-full bg-white/95 shadow group-hover:scale-105 transition"><span class="text-2xl">▶</span></span>
+            </div>
+          </div>
+          <div class="p-4">
+            <p class="font-semibold">零件改名</p>
+            <p class="text-sm text-slate-600 mt-1">演示如何批量或单独修改零件名称。</p>
+          </div>
+        </button>
+
+        <!-- 查虚拟零件 -->
+        <button class="feature-video-btn group rounded-2xl overflow-hidden border border-slate-200 bg-white shadow hover:shadow-lg transition text-left"
+                data-mp4="part-virtual-check.mp4" data-webm="" data-poster-type="template">
+          <div class="relative aspect-video bg-gradient-to-br from-slate-100 to-slate-200">
+            <div class="absolute inset-0 grid place-items-center">
+              <span class="inline-grid place-items-center w-14 h-14 rounded-full bg-white/95 shadow group-hover:scale-105 transition"><span class="text-2xl">▶</span></span>
+            </div>
+          </div>
+          <div class="p-4">
+            <p class="font-semibold">查虚拟零件</p>
+            <p class="text-sm text-slate-600 mt-1">检测并列出装配体中的虚拟零件。</p>
+          </div>
+        </button>
+      </div>
+
+      <!-- 装配体功能 -->
+      <h4 class="mt-10 mb-4 text-xl font-semibold">装配体功能</h4>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- 装配体转实体 -->
+        <button class="feature-video-btn group rounded-2xl overflow-hidden border border-slate-200 bg-white shadow hover:shadow-lg transition text-left"
+                data-mp4="assy-to-body.mp4" data-webm="" data-poster-type="assembly">
+          <div class="relative aspect-video bg-gradient-to-br from-slate-100 to-slate-200">
+            <div class="absolute inset-0 grid place-items-center">
+              <span class="inline-grid place-items-center w-14 h-14 rounded-full bg-white/95 shadow group-hover:scale-105 transition"><span class="text-2xl">▶</span></span>
+            </div>
+          </div>
+          <div class="p-4">
+            <p class="font-semibold">装配体转实体</p>
+            <p class="text-sm text-slate-600 mt-1">将装配体快速转化为单一实体。</p>
+          </div>
+        </button>
+
+        <!-- 批量导出 PDF -->
+        <button class="feature-video-btn group rounded-2xl overflow-hidden border border-slate-200 bg-white shadow hover:shadow-lg transition text-left"
+                data-mp4="assy-export-pdf.mp4" data-webm="" data-poster-type="export">
+          <div class="relative aspect-video bg-gradient-to-br from-slate-100 to-slate-200">
+            <div class="absolute inset-0 grid place-items-center">
+              <span class="inline-grid place-items-center w-14 h-14 rounded-full bg-white/95 shadow group-hover:scale-105 transition"><span class="text-2xl">▶</span></span>
+            </div>
+          </div>
+          <div class="p-4">
+            <p class="font-semibold">批量导出 PDF</p>
+            <p class="text-sm text-slate-600 mt-1">导出多张工程图为 PDF 文件。</p>
+          </div>
+        </button>
+
+        <!-- 批量导出 DWG -->
+        <button class="feature-video-btn group rounded-2xl overflow-hidden border border-slate-200 bg-white shadow hover:shadow-lg transition text-left"
+                data-mp4="assy-export-dwg.mp4" data-webm="" data-poster-type="export">
+          <div class="relative aspect-video bg-gradient-to-br from-slate-100 to-slate-200">
+            <div class="absolute inset-0 grid place-items-center">
+              <span class="inline-grid place-items-center w-14 h-14 rounded-full bg-white/95 shadow group-hover:scale-105 transition"><span class="text-2xl">▶</span></span>
+            </div>
+          </div>
+          <div class="p-4">
+            <p class="font-semibold">批量导出 DWG</p>
+            <p class="text-sm text-slate-600 mt-1">批量导出工程图为 DWG 格式。</p>
+          </div>
+        </button>
+
+        <!-- 批量导出 DXF -->
+        <button class="feature-video-btn group rounded-2xl overflow-hidden border border-slate-200 bg-white shadow hover:shadow-lg transition text-left"
+                data-mp4="assy-export-dxf.mp4" data-webm="" data-poster-type="export">
+          <div class="relative aspect-video bg-gradient-to-br from-slate-100 to-slate-200">
+            <div class="absolute inset-0 grid place-items-center">
+              <span class="inline-grid place-items-center w-14 h-14 rounded-full bg-white/95 shadow group-hover:scale-105 transition"><span class="text-2xl">▶</span></span>
+            </div>
+          </div>
+          <div class="p-4">
+            <p class="font-semibold">批量导出 DXF</p>
+            <p class="text-sm text-slate-600 mt-1">批量导出工程图为 DXF 格式。</p>
+          </div>
+        </button>
+
+        <!-- 随机上色与清除 -->
+        <button class="feature-video-btn group rounded-2xl overflow-hidden border border-slate-200 bg-white shadow hover:shadow-lg transition text-left"
+                data-mp4="assy-color.mp4" data-webm="" data-poster-type="assembly">
+          <div class="relative aspect-video bg-gradient-to-br from-slate-100 to-slate-200">
+            <div class="absolute inset-0 grid place-items-center">
+              <span class="inline-grid place-items-center w-14 h-14 rounded-full bg-white/95 shadow group-hover:scale-105 transition"><span class="text-2xl">▶</span></span>
+            </div>
+          </div>
+          <div class="p-4">
+            <p class="font-semibold">装配体随机上色与清除颜色</p>
+            <p class="text-sm text-slate-600 mt-1">快速随机上色或一键还原。</p>
+          </div>
+        </button>
+
+        <!-- 批量替换模板 -->
+        <button class="feature-video-btn group rounded-2xl overflow-hidden border border-slate-200 bg-white shadow hover:shadow-lg transition text-left"
+                data-mp4="assy-template-replace.mp4" data-webm="" data-poster-type="template">
+          <div class="relative aspect-video bg-gradient-to-br from-slate-100 to-slate-200">
+            <div class="absolute inset-0 grid place-items-center">
+              <span class="inline-grid place-items-center w-14 h-14 rounded-full bg-white/95 shadow group-hover:scale-105 transition"><span class="text-2xl">▶</span></span>
+            </div>
+          </div>
+          <div class="p-4">
+            <p class="font-semibold">批量替换模板</p>
+            <p class="text-sm text-slate-600 mt-1">全工程图模板统一替换与校验。</p>
+          </div>
+        </button>
+      </div>
+
+      <!-- 出图功能 -->
+      <h4 class="mt-10 mb-4 text-xl font-semibold">出图功能</h4>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <button class="feature-video-btn group rounded-2xl overflow-hidden border border-slate-200 bg-white shadow hover:shadow-lg transition text-left"
+                data-mp4="drawing-split-number.mp4" data-webm="" data-poster-type="export">
+          <div class="relative aspect-video bg-gradient-to-br from-slate-100 to-slate-200">
+            <div class="absolute inset-0 grid place-items-center">
+              <span class="inline-grid place-items-center w-14 h-14 rounded-full bg-white/95 shadow group-hover:scale-105 transition"><span class="text-2xl">▶</span></span>
+            </div>
+          </div>
+          <div class="p-4"><p class="font-semibold">图号分离</p><p class="text-sm text-slate-600 mt-1">将图号独立管理与分离。</p></div>
+        </button>
+
+        <button class="feature-video-btn group rounded-2xl overflow-hidden border border-slate-200 bg-white shadow hover:shadow-lg transition text-left"
+                data-mp4="drawing-part-req.mp4" data-webm="" data-poster-type="export">
+          <div class="relative aspect-video bg-gradient-to-br from-slate-100 to-slate-200">
+            <div class="absolute inset-0 grid place-items-center">
+              <span class="inline-grid place-items-center w-14 h-14 rounded-full bg-white/95 shadow group-hover:scale-105 transition"><span class="text-2xl">▶</span></span>
+            </div>
+          </div>
+          <div class="p-4"><p class="font-semibold">零件技术要求</p><p class="text-sm text-slate-600 mt-1">一键插入零件常见技术要求。</p></div>
+        </button>
+
+        <button class="feature-video-btn group rounded-2xl overflow-hidden border border-slate-200 bg-white shadow hover:shadow-lg transition text-left"
+                data-mp4="drawing-tolerance.mp4" data-webm="" data-poster-type="export">
+          <div class="relative aspect-video bg-gradient-to-br from-slate-100 to-slate-200">
+            <div class="absolute inset-0 grid place-items-center">
+              <span class="inline-grid place-items-center w-14 h-14 rounded-full bg-white/95 shadow group-hover:scale-105 transition"><span class="text-2xl">▶</span></span>
+            </div>
+          </div>
+          <div class="p-4"><p class="font-semibold">公差标注</p><p class="text-sm text-slate-600 mt-1">快速添加常用公差标注。</p></div>
+        </button>
+
+        <button class="feature-video-btn group rounded-2xl overflow-hidden border border-slate-200 bg-white shadow hover:shadow-lg transition text-left"
+                data-mp4="drawing-scale.mp4" data-webm="" data-poster-type="export">
+          <div class="relative aspect-video bg-gradient-to-br from-slate-100 to-slate-200">
+            <div class="absolute inset-0 grid place-items-center">
+              <span class="inline-grid place-items-center w-14 h-14 rounded-full bg-white/95 shadow group-hover:scale-105 transition"><span class="text-2xl">▶</span></span>
+            </div>
+          </div>
+          <div class="p-4"><p class="font-semibold">更改图纸比例</p><p class="text-sm text-slate-600 mt-1">调整工程图的比例。</p></div>
+        </button>
+
+        <button class="feature-video-btn group rounded-2xl overflow-hidden border border-slate-200 bg-white shadow hover:shadow-lg transition text-left"
+                data-mp4="drawing-assy-req.mp4" data-webm="" data-poster-type="export">
+          <div class="relative aspect-video bg-gradient-to-br from-slate-100 to-slate-200">
+            <div class="absolute inset-0 grid place-items-center">
+              <span class="inline-grid place-items-center w-14 h-14 rounded-full bg-white/95 shadow group-hover:scale-105 transition"><span class="text-2xl">▶</span></span>
+            </div>
+          </div>
+          <div class="p-4"><p class="font-semibold">装配技术要求</p><p class="text-sm text-slate-600 mt-1">一键插入装配体要求。</p></div>
+        </button>
+
+        <button class="feature-video-btn group rounded-2xl overflow-hidden border border-slate-200 bg-white shadow hover:shadow-lg transition text-left"
+                data-mp4="drawing-auto.mp4" data-webm="" data-poster-type="export">
+          <div class="relative aspect-video bg-gradient-to-br from-slate-100 to-slate-200">
+            <div class="absolute inset-0 grid place-items-center">
+              <span class="inline-grid place-items-center w-14 h-14 rounded-full bg白色/95 shadow group-hover:scale-105 transit
