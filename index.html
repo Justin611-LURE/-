@@ -6,224 +6,811 @@
   <title>内部工具集 · 功能入口</title>
   <style>
     :root{
-      --bg1:#667eea;
-      --bg2:#764ba2;
-      --text:#111827;
-      --muted:#6b7280;
-      --accent:#4f46e5;
-      --accent-soft:#eef2ff;
-      --shadow:0 18px 40px rgba(15,23,42,0.25);
-      --radius-xl:20px;
+      --primary:#00d4ff;
+      --primary-glow:rgba(0,212,255,0.5);
+      --secondary:#9d4edd;
+      --bg-dark:#0a0e27;
+      --text:#e2e8f0;
+      --muted:#94a3b8;
+      --card-bg:rgba(15,23,42,0.8);
+      --shadow:0 25px 50px rgba(0,212,255,0.15);
     }
     *{box-sizing:border-box;margin:0;padding:0}
+
+    /* 开场动画遮罩 */
+    .intro-overlay{
+      position:fixed;
+      inset:0;
+      z-index:9999;
+      background:#000;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      animation:fade-out 0.8s ease 5s forwards;
+      pointer-events:none;
+    }
+    @keyframes fade-out{
+      to{opacity:0;visibility:hidden}
+    }
+
+    /* 太阳 */
+    .sun{
+      position:absolute;
+      left:10%;
+      top:20%;
+      width:120px;
+      height:120px;
+      border-radius:50%;
+      background:radial-gradient(circle,#fff 0%,#ffeb3b 30%,#ff9800 60%,#ff5722 100%);
+      box-shadow:
+        0 0 60px #ffeb3b,
+        0 0 120px #ff9800,
+        0 0 180px rgba(255,152,0,0.5);
+      animation:sun-pulse 2s ease-in-out infinite;
+    }
+    @keyframes sun-pulse{
+      0%,100%{transform:scale(1);opacity:1}
+      50%{transform:scale(1.1);opacity:0.9}
+    }
+
+    /* 光束路径 */
+    .light-beam{
+      position:absolute;
+      height:4px;
+      background:linear-gradient(90deg,
+        rgba(255,235,59,0) 0%,
+        rgba(255,235,59,1) 20%,
+        rgba(0,212,255,1) 80%,
+        rgba(0,212,255,0) 100%
+      );
+      box-shadow:
+        0 0 20px rgba(255,235,59,0.8),
+        0 0 40px rgba(0,212,255,0.6);
+      transform-origin:left center;
+      opacity:0;
+    }
+    .beam1{
+      left:calc(10% + 60px);
+      top:calc(20% + 60px);
+      width:25vw;
+      transform:rotate(0deg);
+      animation:beam-travel1 1s ease-out 0.5s forwards;
+    }
+    .beam2{
+      left:calc(35% + 60px);
+      top:calc(20% + 60px);
+      width:20vw;
+      transform:rotate(5deg);
+      animation:beam-travel2 1s ease-out 1.5s forwards;
+    }
+    .beam3{
+      left:calc(55% + 60px);
+      top:calc(25% + 60px);
+      width:20vw;
+      transform:rotate(-5deg);
+      animation:beam-travel3 1s ease-out 2.5s forwards;
+    }
+    @keyframes beam-travel1{
+      0%{width:0;opacity:0}
+      10%{opacity:1}
+      100%{width:25vw;opacity:1}
+    }
+    @keyframes beam-travel2{
+      0%{width:0;opacity:0}
+      10%{opacity:1}
+      100%{width:20vw;opacity:1}
+    }
+    @keyframes beam-travel3{
+      0%{width:0;opacity:0}
+      10%{opacity:1}
+      100%{width:20vw;opacity:1}
+    }
+
+    /* 光信号粒子 */
+    .light-particle{
+      position:absolute;
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:radial-gradient(circle,#fff,#00d4ff);
+      box-shadow:0 0 20px #00d4ff;
+      opacity:0;
+    }
+    .particle1{
+      animation:particle-travel1 1.2s ease-out 0.5s forwards;
+    }
+    .particle2{
+      animation:particle-travel2 1.2s ease-out 1.5s forwards;
+    }
+    .particle3{
+      animation:particle-travel3 1.2s ease-out 2.5s forwards;
+    }
+    @keyframes particle-travel1{
+      0%{left:calc(10% + 60px);top:calc(20% + 60px);opacity:0}
+      10%{opacity:1}
+      100%{left:calc(35% + 60px);top:calc(20% + 60px);opacity:1}
+    }
+    @keyframes particle-travel2{
+      0%{left:calc(35% + 60px);top:calc(20% + 60px);opacity:0}
+      10%{opacity:1}
+      100%{left:calc(55% + 60px);top:calc(25% + 60px);opacity:1}
+    }
+    @keyframes particle-travel3{
+      0%{left:calc(55% + 60px);top:calc(25% + 60px);opacity:0}
+      10%{opacity:1}
+      100%{left:calc(75% + 60px);top:calc(20% + 60px);opacity:1}
+    }
+
+    /* 中继站点 */
+    .relay{
+      position:absolute;
+      width:40px;
+      height:40px;
+      border:3px solid var(--primary);
+      border-radius:8px;
+      background:rgba(0,212,255,0.1);
+      backdrop-filter:blur(5px);
+      box-shadow:0 0 30px rgba(0,212,255,0.5);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      opacity:0;
+    }
+    .relay::before{
+      content:'';
+      width:10px;
+      height:10px;
+      background:var(--primary);
+      border-radius:50%;
+      box-shadow:0 0 15px var(--primary);
+    }
+    .relay1{
+      left:35%;
+      top:calc(20% + 40px);
+      animation:relay-appear 0.3s ease 1.5s forwards;
+    }
+    .relay2{
+      left:55%;
+      top:calc(25% + 40px);
+      animation:relay-appear 0.3s ease 2.5s forwards;
+    }
+    @keyframes relay-appear{
+      0%{opacity:0;transform:scale(0) rotate(45deg)}
+      100%{opacity:1;transform:scale(1) rotate(0deg)}
+    }
+
+    /* 路由器 */
+    .router{
+      position:absolute;
+      right:15%;
+      top:calc(20% + 30px);
+      width:80px;
+      height:60px;
+      opacity:0;
+      animation:router-appear 0.5s ease 3.5s forwards;
+    }
+    @keyframes router-appear{
+      0%{opacity:0;transform:scale(0)}
+      60%{transform:scale(1.2)}
+      100%{opacity:1;transform:scale(1)}
+    }
+    .router-body{
+      width:100%;
+      height:40px;
+      background:linear-gradient(135deg,#1e293b,#334155);
+      border-radius:8px;
+      border:2px solid var(--primary);
+      box-shadow:0 0 30px rgba(0,212,255,0.6);
+      position:relative;
+    }
+    .router-antenna{
+      position:absolute;
+      width:4px;
+      height:20px;
+      background:linear-gradient(to top,#64748b,var(--primary));
+      border-radius:2px;
+      top:-18px;
+    }
+    .router-antenna:nth-child(1){left:15px}
+    .router-antenna:nth-child(2){left:35px}
+    .router-antenna:nth-child(3){left:55px}
+    .router-light{
+      position:absolute;
+      width:6px;
+      height:6px;
+      border-radius:50%;
+      top:50%;
+      transform:translateY(-50%);
+      animation:light-blink 0.8s ease infinite;
+    }
+    .router-light:nth-child(4){left:10px;background:#22c55e;animation-delay:0s}
+    .router-light:nth-child(5){left:20px;background:#3b82f6;animation-delay:0.2s}
+    .router-light:nth-child(6){left:30px;background:#00d4ff;animation-delay:0.4s}
+    @keyframes light-blink{
+      0%,100%{opacity:0.3;box-shadow:none}
+      50%{opacity:1;box-shadow:0 0 10px currentColor}
+    }
+
+    /* 最终光芒爆发 */
+    .final-burst{
+      position:absolute;
+      right:15%;
+      top:calc(20% + 30px);
+      width:150px;
+      height:150px;
+      opacity:0;
+      animation:burst 0.8s ease 4s forwards;
+    }
+    @keyframes burst{
+      0%{opacity:0;transform:scale(0)}
+      50%{opacity:1;transform:scale(1.5)}
+      100%{opacity:0;transform:scale(3)}
+    }
+    .burst-ray{
+      position:absolute;
+      width:100%;
+      height:2px;
+      background:linear-gradient(90deg,transparent,var(--primary),transparent);
+      box-shadow:0 0 20px var(--primary);
+      left:50%;
+      top:50%;
+      transform-origin:left center;
+    }
+    .burst-ray:nth-child(1){transform:rotate(0deg)}
+    .burst-ray:nth-child(2){transform:rotate(45deg)}
+    .burst-ray:nth-child(3){transform:rotate(90deg)}
+    .burst-ray:nth-child(4){transform:rotate(135deg)}
+    .burst-ray:nth-child(5){transform:rotate(180deg)}
+    .burst-ray:nth-child(6){transform:rotate(225deg)}
+    .burst-ray:nth-child(7){transform:rotate(270deg)}
+    .burst-ray:nth-child(8){transform:rotate(315deg)}
+    
     body{
       min-height:100vh;
       font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
-      background:linear-gradient(135deg,var(--bg1),var(--bg2));
+      background:var(--bg-dark);
       display:flex;
       align-items:center;
       justify-content:center;
       padding:24px;
       color:var(--text);
-    }
-    .wrap{
-      width:100%;
-      max-width:1120px;
-      background:rgba(255,255,255,0.96);
-      border-radius:var(--radius-xl);
-      box-shadow:var(--shadow);
-      padding:26px 26px 30px;
+      overflow:hidden;
       position:relative;
+    }
+
+    /* 动态背景 - 光波扩散 */
+    .bg-waves{
+      position:fixed;
+      inset:0;
+      z-index:0;
       overflow:hidden;
     }
-    .wrap::before{
-      content:"";
+    .wave{
       position:absolute;
-      inset:-40%;
-      background:
-        radial-gradient(circle at 0% 0%,rgba(96,165,250,0.12),transparent 60%),
-        radial-gradient(circle at 100% 100%,rgba(244,114,182,0.12),transparent 60%);
-      opacity:0.8;
+      width:200%;
+      height:200%;
+      border-radius:45%;
+      opacity:0.08;
+      animation:wave-rotate 25s linear infinite;
+    }
+    .wave:nth-child(1){
+      background:radial-gradient(circle,var(--primary) 0%,transparent 70%);
+      animation-duration:20s;
+      top:-50%;
+      left:-50%;
+    }
+    .wave:nth-child(2){
+      background:radial-gradient(circle,var(--secondary) 0%,transparent 70%);
+      animation-duration:30s;
+      animation-direction:reverse;
+      bottom:-50%;
+      right:-50%;
+    }
+    @keyframes wave-rotate{
+      0%{transform:rotate(0deg)}
+      100%{transform:rotate(360deg)}
+    }
+
+    /* 粒子系统 */
+    .particles{
+      position:fixed;
+      inset:0;
+      z-index:1;
       pointer-events:none;
     }
-    header{
-      position:relative;
+    .particle{
+      position:absolute;
+      width:3px;
+      height:3px;
+      background:var(--primary);
+      border-radius:50%;
+      box-shadow:0 0 10px var(--primary-glow);
+      animation:particle-float linear infinite;
+    }
+    @keyframes particle-float{
+      0%{
+        transform:translate(0,100vh) scale(0);
+        opacity:0;
+      }
+      10%{opacity:1}
+      90%{opacity:1}
+      100%{
+        transform:translate(var(--tx),0) scale(1);
+        opacity:0;
+      }
+    }
+
+    /* 光纤传输线 */
+    .fiber-lines{
+      position:fixed;
+      inset:0;
       z-index:1;
-      margin-bottom:20px;
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-start;
-      gap:16px;
+      pointer-events:none;
+    }
+    .fiber{
+      position:absolute;
+      height:2px;
+      background:linear-gradient(90deg,
+        transparent,
+        var(--primary) 20%,
+        var(--primary) 80%,
+        transparent
+      );
+      opacity:0.4;
+      animation:fiber-pulse 3s ease-in-out infinite;
+    }
+    .fiber::before{
+      content:'';
+      position:absolute;
+      width:40px;
+      height:100%;
+      background:linear-gradient(90deg,
+        transparent,
+        rgba(0,212,255,0.8),
+        transparent
+      );
+      box-shadow:0 0 20px var(--primary-glow);
+      animation:fiber-travel 2s linear infinite;
+    }
+    @keyframes fiber-pulse{
+      0%,100%{opacity:0.2}
+      50%{opacity:0.6}
+    }
+    @keyframes fiber-travel{
+      0%{left:-40px}
+      100%{left:100%}
+    }
+
+    /* 数据流 */
+    .data-stream{
+      position:fixed;
+      right:5%;
+      top:10%;
+      width:200px;
+      height:80%;
+      overflow:hidden;
+      z-index:1;
+      pointer-events:none;
+      opacity:0.15;
+    }
+    .binary-code{
+      font-family:monospace;
+      font-size:12px;
+      color:var(--primary);
+      animation:stream-flow 8s linear infinite;
+      white-space:nowrap;
+    }
+    @keyframes stream-flow{
+      0%{transform:translateY(0)}
+      100%{transform:translateY(-100%)}
+    }
+
+    .wrap{
+      width:100%;
+      max-width:1200px;
+      position:relative;
+      z-index:2;
+      opacity:0;
+      animation:content-fade-in 1s ease-out 4.5s forwards;
+    }
+    @keyframes content-fade-in{
+      0%{opacity:0;transform:scale(0.9) translateY(30px)}
+      100%{opacity:1;transform:scale(1) translateY(0)}
+    }
+
+    header{
+      margin-bottom:40px;
+      text-align:center;
+      position:relative;
     }
     header h1{
-      font-size:26px;
+      font-size:42px;
       font-weight:800;
-      letter-spacing:.03em;
-      color:#111827;
-      margin-bottom:6px;
+      background:linear-gradient(135deg,var(--primary),var(--secondary));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+      margin-bottom:12px;
+      letter-spacing:0.05em;
+      animation:title-glow 3s ease-in-out infinite;
+      position:relative;
+    }
+    header h1::after{
+      content:'';
+      position:absolute;
+      bottom:-10px;
+      left:50%;
+      transform:translateX(-50%);
+      width:100px;
+      height:2px;
+      background:linear-gradient(90deg,transparent,var(--primary),transparent);
+      box-shadow:0 0 20px var(--primary-glow);
+    }
+    @keyframes title-glow{
+      0%,100%{filter:drop-shadow(0 0 10px var(--primary-glow))}
+      50%{filter:drop-shadow(0 0 25px var(--primary-glow))}
     }
     header p{
-      font-size:13px;
+      font-size:16px;
       color:var(--muted);
+      margin-top:20px;
     }
     .tag{
-      background:var(--accent-soft);
-      color:var(--accent);
-      padding:6px 10px;
+      display:inline-block;
+      background:linear-gradient(135deg,rgba(0,212,255,0.15),rgba(157,78,221,0.15));
+      border:1px solid var(--primary);
+      color:var(--primary);
+      padding:8px 16px;
       border-radius:999px;
-      font-size:12px;
+      font-size:13px;
       font-weight:600;
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-      border:1px solid #e0e7ff;
+      margin-top:16px;
+      box-shadow:0 0 20px rgba(0,212,255,0.3);
+      animation:tag-pulse 2s ease-in-out infinite;
     }
+    @keyframes tag-pulse{
+      0%,100%{box-shadow:0 0 20px rgba(0,212,255,0.3)}
+      50%{box-shadow:0 0 35px rgba(0,212,255,0.6)}
+    }
+
     .grid{
-      position:relative;
-      z-index:1;
       display:grid;
       grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:18px;
-      margin-top:10px;
+      gap:24px;
     }
     @media (max-width:900px){
-      .grid{grid-template-columns:1fr;gap:14px}
-      header{flex-direction:column;}
+      .grid{grid-template-columns:1fr}
+      header h1{font-size:32px}
     }
+
     .tile{
       display:flex;
       flex-direction:column;
       justify-content:space-between;
-      padding:18px 16px;
-      border-radius:18px;
-      background:linear-gradient(145deg,#ffffff,#f3f4ff);
-      border:1px solid #e5e7eb;
-      box-shadow:0 10px 25px rgba(15,23,42,0.08);
+      padding:24px;
+      border-radius:20px;
+      background:var(--card-bg);
+      backdrop-filter:blur(10px);
+      border:1px solid rgba(0,212,255,0.2);
       text-decoration:none;
       color:inherit;
       position:relative;
       overflow:hidden;
-      transition:
-        transform .16s ease,
-        box-shadow .16s ease,
-        border-color .16s ease,
-        background .16s ease;
+      transition:all 0.4s cubic-bezier(0.4,0,0.2,1);
+      opacity:0;
+      animation:tile-appear 0.8s ease-out 5s forwards;
+      animation-delay:calc(5s + var(--index) * 0.15s);
     }
+    .tile:nth-child(1){--index:0}
+    .tile:nth-child(2){--index:1}
+    .tile:nth-child(3){--index:2}
+    .tile:nth-child(4){--index:3}
+    
+    @keyframes tile-appear{
+      0%{
+        opacity:0;
+        transform:translateY(50px) rotateX(20deg);
+      }
+      100%{
+        opacity:1;
+        transform:translateY(0) rotateX(0);
+      }
+    }
+
+    /* 悬浮光晕效果 */
+    .tile::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:radial-gradient(
+        800px circle at var(--mouse-x,50%) var(--mouse-y,50%),
+        rgba(0,212,255,0.15),
+        transparent 40%
+      );
+      opacity:0;
+      transition:opacity 0.3s;
+    }
+    .tile:hover::before{
+      opacity:1;
+    }
+    .tile::after{
+      content:'';
+      position:absolute;
+      inset:-2px;
+      border-radius:20px;
+      padding:2px;
+      background:linear-gradient(135deg,var(--primary),var(--secondary));
+      -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite:xor;
+      mask-composite:exclude;
+      opacity:0;
+      transition:opacity 0.3s;
+    }
+    .tile:hover::after{
+      opacity:1;
+      animation:border-glow 2s linear infinite;
+    }
+    @keyframes border-glow{
+      0%{filter:hue-rotate(0deg)}
+      100%{filter:hue-rotate(360deg)}
+    }
+
     .tile:hover{
-      transform:translateY(-4px);
-      box-shadow:0 20px 45px rgba(15,23,42,0.18);
-      border-color:var(--accent);
-      background:linear-gradient(145deg,#fff,#eef2ff);
+      transform:translateY(-8px) scale(1.02);
+      box-shadow:0 30px 60px rgba(0,212,255,0.3);
+      border-color:var(--primary);
     }
-    .tile span.badge{
+
+    .tile .badge{
       display:inline-flex;
       align-items:center;
-      gap:6px;
-      font-size:11px;
-      padding:4px 9px;
+      gap:8px;
+      font-size:12px;
+      padding:6px 12px;
       border-radius:999px;
-      background:rgba(79,70,229,0.06);
-      color:var(--accent);
-      border:1px solid rgba(79,70,229,0.18);
-      margin-bottom:10px;
+      background:rgba(0,212,255,0.1);
+      border:1px solid rgba(0,212,255,0.3);
+      color:var(--primary);
+      margin-bottom:16px;
       font-weight:600;
+      width:fit-content;
     }
+    .tile .badge::before{
+      content:'●';
+      animation:blink 2s ease-in-out infinite;
+    }
+    @keyframes blink{
+      0%,100%{opacity:0.3}
+      50%{opacity:1}
+    }
+
     .tile h2{
-      font-size:18px;
-      margin-bottom:6px;
+      font-size:22px;
+      margin-bottom:10px;
+      color:var(--text);
+      font-weight:700;
     }
     .tile p{
-      font-size:13px;
+      font-size:14px;
       color:var(--muted);
-      line-height:1.5;
+      line-height:1.7;
     }
+
     .tile-footer{
-      margin-top:14px;
+      margin-top:20px;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      font-size:12px;
-      color:var(--accent);
+      font-size:13px;
+      color:var(--primary);
       font-weight:600;
     }
     .tile-footer .icon{
-      width:28px;
-      height:28px;
-      border-radius:999px;
-      border:1px solid rgba(79,70,229,0.25);
+      width:36px;
+      height:36px;
+      border-radius:50%;
+      border:2px solid var(--primary);
       display:flex;
       align-items:center;
       justify-content:center;
-      font-size:15px;
-      background:#eef2ff;
+      font-size:18px;
+      background:rgba(0,212,255,0.1);
+      transition:all 0.3s;
+    }
+    .tile:hover .tile-footer .icon{
+      transform:rotate(90deg) scale(1.1);
+      box-shadow:0 0 20px var(--primary-glow);
+    }
+
+    /* 扫描线效果 */
+    .scan-line{
+      position:absolute;
+      width:100%;
+      height:2px;
+      background:linear-gradient(90deg,
+        transparent,
+        var(--primary),
+        transparent
+      );
+      box-shadow:0 0 10px var(--primary-glow);
+      animation:scan 3s linear infinite;
+      opacity:0.5;
+    }
+    @keyframes scan{
+      0%{top:0}
+      100%{top:100%}
     }
   </style>
 </head>
 <body>
+  <!-- 开场动画层 -->
+  <div class="intro-overlay">
+    <!-- 太阳 -->
+    <div class="sun"></div>
+    
+    <!-- 光束 -->
+    <div class="light-beam beam1"></div>
+    <div class="light-beam beam2"></div>
+    <div class="light-beam beam3"></div>
+    
+    <!-- 光粒子 -->
+    <div class="light-particle particle1"></div>
+    <div class="light-particle particle2"></div>
+    <div class="light-particle particle3"></div>
+    
+    <!-- 中继节点 -->
+    <div class="relay relay1"></div>
+    <div class="relay relay2"></div>
+    
+    <!-- 路由器 -->
+    <div class="router">
+      <div class="router-body">
+        <div class="router-antenna"></div>
+        <div class="router-antenna"></div>
+        <div class="router-antenna"></div>
+        <div class="router-light"></div>
+        <div class="router-light"></div>
+        <div class="router-light"></div>
+      </div>
+    </div>
+    
+    <!-- 最终爆发 -->
+    <div class="final-burst">
+      <div class="burst-ray"></div>
+      <div class="burst-ray"></div>
+      <div class="burst-ray"></div>
+      <div class="burst-ray"></div>
+      <div class="burst-ray"></div>
+      <div class="burst-ray"></div>
+      <div class="burst-ray"></div>
+      <div class="burst-ray"></div>
+    </div>
+  </div>
+
+  <!-- 背景光波 -->
+  <div class="bg-waves">
+    <div class="wave"></div>
+    <div class="wave"></div>
+  </div>
+
+  <!-- 粒子系统 -->
+  <div class="particles" id="particles"></div>
+
+  <!-- 光纤传输线 -->
+  <div class="fiber-lines" id="fibers"></div>
+
+  <!-- 数据流 -->
+  <div class="data-stream">
+    <div class="binary-code" id="binary"></div>
+  </div>
+
   <div class="wrap">
     <header>
-      <div>
-        <h1>内部工具集 · 功能入口</h1>
-        <p>选择下方功能卡片，点击后将在新标签页打开对应的系统 / 页面。</p>
-      </div>
-      <div>
-        <span class="tag">本地 & 在线 HTML 工具集</span>
-      </div>
+      <h1>JUSTIN:工具集 · 智能入口</h1>
+      <p>选择下方功能卡片，点击后将在新标签页打开对应的系统 / 页面。</p>
+      <span class="tag">● 本地 & 在线 HTML 工具集</span>
     </header>
 
     <section class="grid">
-      <!-- 功能 1：单模治具 -->
       <a class="tile" href="danmo.html" target="_blank" rel="noopener">
         <span class="badge">功能 ① · 单模治具</span>
         <div>
           <h2>单模治具下单查询系统</h2>
-          <p>查询和统计单模治具下单情况，支持按设计人员、图纸分类、时间等维度筛选。</p>
+          <p>查询和统计单模治具下单情况,支持按设计人员、图纸分类、时间等维度筛选。</p>
         </div>
         <div class="tile-footer">
           <span>点击打开系统</span>
           <span class="icon">➜</span>
         </div>
+        <div class="scan-line"></div>
       </a>
 
-      <!-- 功能 2：OB 治具 -->
       <a class="tile" href="OB.html" target="_blank" rel="noopener">
         <span class="badge">功能 ② · OB 治具</span>
         <div>
           <h2>OB治具下单查询系统</h2>
-          <p>用于 OB 系列治具的下单记录分析，可配合 Excel 数据进行统计和导出。</p>
+          <p>用于 OB 系列治具的下单记录分析,可配合 Excel 数据进行统计和导出。</p>
         </div>
         <div class="tile-footer">
           <span>点击打开系统</span>
           <span class="icon">➜</span>
         </div>
+        <div class="scan-line"></div>
       </a>
 
-      <!-- 功能 3：发包文档分离 -->
       <a class="tile" href="fabao.html" target="_blank" rel="noopener">
         <span class="badge">功能 ③ · 发包文件</span>
         <div>
           <h2>发包文档分离工具</h2>
-          <p>根据规则自动筛选、转移、复制发包文件，支持目录选择与批量操作。</p>
+          <p>根据规则自动筛选、转移、复制发包文件,支持目录选择与批量操作。</p>
         </div>
         <div class="tile-footer">
           <span>点击打开工具</span>
           <span class="icon">⚙</span>
         </div>
+        <div class="scan-line"></div>
       </a>
 
-      <!-- 功能 4：SW4.0 页面 -->
       <a class="tile" href="SW4.0.html" target="_blank" rel="noopener">
         <span class="badge">功能 ④ · SW 工程图</span>
         <div>
           <h2>SW4.0 宏插件</h2>
-          <p>SOLIDWORKS 工程图自动化工具集：批量出图、模板批量替换、技术要求库与装配处理等一站式功能。</p>
+          <p>SOLIDWORKS 工程图自动化工具集:批量出图、模板批量替换、技术要求库与装配处理等一站式功能。</p>
         </div>
         <div class="tile-footer">
           <span>打开 SW4.0 页面</span>
           <span class="icon">★</span>
         </div>
+        <div class="scan-line"></div>
       </a>
     </section>
   </div>
+
+  <script>
+    // 生成粒子
+    const particlesContainer = document.getElementById('particles');
+    for(let i=0;i<30;i++){
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left = Math.random()*100 + '%';
+      p.style.animationDuration = (5+Math.random()*10)+'s';
+      p.style.animationDelay = Math.random()*5+'s';
+      p.style.setProperty('--tx', (Math.random()*200-100)+'px');
+      particlesContainer.appendChild(p);
+    }
+
+    // 生成光纤线
+    const fibersContainer = document.getElementById('fibers');
+    for(let i=0;i<8;i++){
+      const f = document.createElement('div');
+      f.className = 'fiber';
+      f.style.top = (10+i*12)+'%';
+      f.style.width = (30+Math.random()*40)+'%';
+      f.style.left = Math.random()*50+'%';
+      f.style.animationDelay = Math.random()*3+'s';
+      const travel = f.querySelector('::before') || f;
+      if(travel.style) travel.style.animationDelay = Math.random()*2+'s';
+      fibersContainer.appendChild(f);
+    }
+
+    // 生成二进制数据流
+    const binaryEl = document.getElementById('binary');
+    let binaryText = '';
+    for(let i=0;i<200;i++){
+      binaryText += (Math.random()>0.5?'1':'0') + (i%20===19?'\n':'');
+    }
+    binaryEl.textContent = binaryText + '\n' + binaryText;
+
+    // 鼠标跟踪光晕效果
+    document.querySelectorAll('.tile').forEach(tile=>{
+      tile.addEventListener('mousemove',e=>{
+        const rect = tile.getBoundingClientRect();
+        const x = ((e.clientX - rect.left)/rect.width)*100;
+        const y = ((e.clientY - rect.top)/rect.height)*100;
+        tile.style.setProperty('--mouse-x',x+'%');
+        tile.style.setProperty('--mouse-y',y+'%');
+      });
+    });
+  </script>
 </body>
 </html>
