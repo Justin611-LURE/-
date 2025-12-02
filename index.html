@@ -9,262 +9,184 @@
       --primary:#00d4ff;
       --primary-glow:rgba(0,212,255,0.5);
       --secondary:#9d4edd;
-      --bg-dark:#0a0e27;
+      --bg-dark:#020617;
       --text:#e2e8f0;
       --muted:#94a3b8;
       --card-bg:rgba(15,23,42,0.8);
-      --shadow:0 25px 50px rgba(0,212,255,0.15);
     }
     *{box-sizing:border-box;margin:0;padding:0}
 
-    /* 开场动画遮罩 */
+    /* ===================== 开场动画：鱼咬 J 鱼钩（≈2s） ===================== */
     .intro-overlay{
       position:fixed;
       inset:0;
       z-index:9999;
-      background:#000;
+      background:radial-gradient(circle at top,#020617,#000814 60%,#000 100%);
       display:flex;
       align-items:center;
       justify-content:center;
-      animation:fade-out 0.8s ease 5s forwards;
-      pointer-events:none;
+      animation:fade-out 0.3s ease 1.7s forwards; /* 总时长约 2s */
     }
     @keyframes fade-out{
       to{opacity:0;visibility:hidden}
     }
 
-    /* 太阳 */
-    .sun{
+    .skip-intro-btn{
       position:absolute;
-      left:10%;
-      top:20%;
-      width:120px;
-      height:120px;
-      border-radius:50%;
-      background:radial-gradient(circle,#fff 0%,#ffeb3b 30%,#ff9800 60%,#ff5722 100%);
-      box-shadow:
-        0 0 60px #ffeb3b,
-        0 0 120px #ff9800,
-        0 0 180px rgba(255,152,0,0.5);
-      animation:sun-pulse 2s ease-in-out infinite;
-    }
-    @keyframes sun-pulse{
-      0%,100%{transform:scale(1);opacity:1}
-      50%{transform:scale(1.1);opacity:0.9}
-    }
-
-    /* 光束路径 */
-    .light-beam{
-      position:absolute;
-      height:4px;
-      background:linear-gradient(90deg,
-        rgba(255,235,59,0) 0%,
-        rgba(255,235,59,1) 20%,
-        rgba(0,212,255,1) 80%,
-        rgba(0,212,255,0) 100%
-      );
-      box-shadow:
-        0 0 20px rgba(255,235,59,0.8),
-        0 0 40px rgba(0,212,255,0.6);
-      transform-origin:left center;
-      opacity:0;
-    }
-    .beam1{
-      left:calc(10% + 60px);
-      top:calc(20% + 60px);
-      width:25vw;
-      transform:rotate(0deg);
-      animation:beam-travel1 1s ease-out 0.5s forwards;
-    }
-    .beam2{
-      left:calc(35% + 60px);
-      top:calc(20% + 60px);
-      width:20vw;
-      transform:rotate(5deg);
-      animation:beam-travel2 1s ease-out 1.5s forwards;
-    }
-    .beam3{
-      left:calc(55% + 60px);
-      top:calc(25% + 60px);
-      width:20vw;
-      transform:rotate(-5deg);
-      animation:beam-travel3 1s ease-out 2.5s forwards;
-    }
-    @keyframes beam-travel1{
-      0%{width:0;opacity:0}
-      10%{opacity:1}
-      100%{width:25vw;opacity:1}
-    }
-    @keyframes beam-travel2{
-      0%{width:0;opacity:0}
-      10%{opacity:1}
-      100%{width:20vw;opacity:1}
-    }
-    @keyframes beam-travel3{
-      0%{width:0;opacity:0}
-      10%{opacity:1}
-      100%{width:20vw;opacity:1}
-    }
-
-    /* 光信号粒子 */
-    .light-particle{
-      position:absolute;
-      width:8px;
-      height:8px;
-      border-radius:50%;
-      background:radial-gradient(circle,#fff,#00d4ff);
-      box-shadow:0 0 20px #00d4ff;
-      opacity:0;
-    }
-    .particle1{
-      animation:particle-travel1 1.2s ease-out 0.5s forwards;
-    }
-    .particle2{
-      animation:particle-travel2 1.2s ease-out 1.5s forwards;
-    }
-    .particle3{
-      animation:particle-travel3 1.2s ease-out 2.5s forwards;
-    }
-    @keyframes particle-travel1{
-      0%{left:calc(10% + 60px);top:calc(20% + 60px);opacity:0}
-      10%{opacity:1}
-      100%{left:calc(35% + 60px);top:calc(20% + 60px);opacity:1}
-    }
-    @keyframes particle-travel2{
-      0%{left:calc(35% + 60px);top:calc(20% + 60px);opacity:0}
-      10%{opacity:1}
-      100%{left:calc(55% + 60px);top:calc(25% + 60px);opacity:1}
-    }
-    @keyframes particle-travel3{
-      0%{left:calc(55% + 60px);top:calc(25% + 60px);opacity:0}
-      10%{opacity:1}
-      100%{left:calc(75% + 60px);top:calc(20% + 60px);opacity:1}
-    }
-
-    /* 中继站点 */
-    .relay{
-      position:absolute;
-      width:40px;
-      height:40px;
-      border:3px solid var(--primary);
-      border-radius:8px;
-      background:rgba(0,212,255,0.1);
-      backdrop-filter:blur(5px);
-      box-shadow:0 0 30px rgba(0,212,255,0.5);
-      display:flex;
+      right:32px;
+      bottom:32px;
+      padding:8px 18px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.7);
+      background:rgba(0,0,0,0.45);
+      color:#f9fafb;
+      font-size:13px;
+      font-weight:500;
+      cursor:pointer;
+      display:inline-flex;
       align-items:center;
-      justify-content:center;
-      opacity:0;
+      gap:6px;
+      backdrop-filter:blur(8px);
+      box-shadow:0 10px 30px rgba(0,0,0,0.6);
+      transition:all 0.2s ease;
+      z-index:10000;
     }
-    .relay::before{
-      content:'';
-      width:10px;
-      height:10px;
-      background:var(--primary);
-      border-radius:50%;
-      box-shadow:0 0 15px var(--primary);
+    .skip-intro-btn::after{
+      content:'⏭';
+      font-size:14px;
     }
-    .relay1{
-      left:35%;
-      top:calc(20% + 40px);
-      animation:relay-appear 0.3s ease 1.5s forwards;
+    .skip-intro-btn:hover{
+      background:rgba(255,255,255,0.12);
+      transform:translateY(-1px);
     }
-    .relay2{
-      left:55%;
-      top:calc(25% + 40px);
-      animation:relay-appear 0.3s ease 2.5s forwards;
-    }
-    @keyframes relay-appear{
-      0%{opacity:0;transform:scale(0) rotate(45deg)}
-      100%{opacity:1;transform:scale(1) rotate(0deg)}
+    .skip-intro-btn:active{
+      transform:translateY(0);
+      box-shadow:0 4px 16px rgba(0,0,0,0.7);
     }
 
-    /* 路由器 */
-    .router{
-      position:absolute;
-      right:15%;
-      top:calc(20% + 30px);
-      width:80px;
-      height:60px;
-      opacity:0;
-      animation:router-appear 0.5s ease 3.5s forwards;
-    }
-    @keyframes router-appear{
-      0%{opacity:0;transform:scale(0)}
-      60%{transform:scale(1.2)}
-      100%{opacity:1;transform:scale(1)}
-    }
-    .router-body{
-      width:100%;
-      height:40px;
-      background:linear-gradient(135deg,#1e293b,#334155);
-      border-radius:8px;
-      border:2px solid var(--primary);
-      box-shadow:0 0 30px rgba(0,212,255,0.6);
+    /* LOGO 区：整体放大一倍 */
+    .logo-scene{
       position:relative;
+      width:380px;
+      height:380px;
+      filter:drop-shadow(0 0 25px rgba(0,0,0,0.9));
     }
-    .router-antenna{
-      position:absolute;
-      width:4px;
-      height:20px;
-      background:linear-gradient(to top,#64748b,var(--primary));
-      border-radius:2px;
-      top:-18px;
-    }
-    .router-antenna:nth-child(1){left:15px}
-    .router-antenna:nth-child(2){left:35px}
-    .router-antenna:nth-child(3){left:55px}
-    .router-light{
-      position:absolute;
-      width:6px;
-      height:6px;
-      border-radius:50%;
-      top:50%;
-      transform:translateY(-50%);
-      animation:light-blink 0.8s ease infinite;
-    }
-    .router-light:nth-child(4){left:10px;background:#22c55e;animation-delay:0s}
-    .router-light:nth-child(5){left:20px;background:#3b82f6;animation-delay:0.2s}
-    .router-light:nth-child(6){left:30px;background:#00d4ff;animation-delay:0.4s}
-    @keyframes light-blink{
-      0%,100%{opacity:0.3;box-shadow:none}
-      50%{opacity:1;box-shadow:0 0 10px currentColor}
+    .logo-svg{
+      width:380px;
+      height:380px;
+      display:block;
     }
 
-    /* 最终光芒爆发 */
-    .final-burst{
-      position:absolute;
-      right:15%;
-      top:calc(20% + 30px);
-      width:150px;
-      height:150px;
+    /* J 形鱼钩主体 */
+    .hook-path{
+      stroke:#f9fafb;
+      stroke-width:16;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+      fill:none;
       opacity:0;
-      animation:burst 0.8s ease 4s forwards;
+      animation:hook-in 0.4s cubic-bezier(.23,.82,.35,1.3) 0s forwards;
     }
-    @keyframes burst{
-      0%{opacity:0;transform:scale(0)}
-      50%{opacity:1;transform:scale(1.5)}
-      100%{opacity:0;transform:scale(3)}
+    /* 顶部横杆 */
+    .hook-top{
+      stroke:#f9fafb;
+      stroke-width:14;
+      stroke-linecap:round;
+      fill:none;
+      opacity:0;
+      animation:bar-in 0.35s ease-out 0.05s forwards;
     }
-    .burst-ray{
-      position:absolute;
-      width:100%;
-      height:2px;
-      background:linear-gradient(90deg,transparent,var(--primary),transparent);
-      box-shadow:0 0 20px var(--primary);
-      left:50%;
-      top:50%;
-      transform-origin:left center;
+    /* 钩尖（向上略翘） */
+    .hook-barb{
+      stroke:#f9fafb;
+      stroke-width:10;
+      stroke-linecap:round;
+      fill:none;
+      opacity:0;
+      animation:barb-in 0.35s ease-out 0.1s forwards;
     }
-    .burst-ray:nth-child(1){transform:rotate(0deg)}
-    .burst-ray:nth-child(2){transform:rotate(45deg)}
-    .burst-ray:nth-child(3){transform:rotate(90deg)}
-    .burst-ray:nth-child(4){transform:rotate(135deg)}
-    .burst-ray:nth-child(5){transform:rotate(180deg)}
-    .burst-ray:nth-child(6){transform:rotate(225deg)}
-    .burst-ray:nth-child(7){transform:rotate(270deg)}
-    .burst-ray:nth-child(8){transform:rotate(315deg)}
-    
+
+    @keyframes hook-in{
+      0%{
+        opacity:0;
+        transform:translateY(40px) scale(0.8);
+        transform-origin:140px 140px;
+      }
+      70%{
+        opacity:1;
+        transform:translateY(-5px) scale(1.03);
+      }
+      100%{
+        opacity:1;
+        transform:translateY(0) scale(1);
+      }
+    }
+    @keyframes bar-in{
+      0%{
+        opacity:0;
+        transform:translateY(20px);
+        transform-origin:140px 50px;
+      }
+      100%{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+    @keyframes barb-in{
+      0%{
+        opacity:0;
+        transform:translateY(10px);
+        transform-origin:128px 126px;
+      }
+      100%{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    /* 鱼剪影整体 */
+    .fish-group{
+      fill:#f9fafb;
+      opacity:0;
+      transform-box:fill-box;
+      transform-origin:center;
+      animation:fish-bite 0.9s ease-out 0.25s forwards;
+    }
+
+    /* 鱼身体（实心）—— 头在右边，朝向鱼钩；嘴在 x≈120 处 */
+    .fish-body{
+      fill:#f9fafb;
+    }
+    .fish-inner{
+      fill:#020617; /* 身体内部黑弧线，做出类似 Logo 的花纹 */
+    }
+    .fish-eye-white{
+      fill:#f9fafb;
+    }
+    .fish-eye-black{
+      fill:#020617;
+    }
+
+    /* 鱼咬钩动画：从左下方游过来，最后嘴巴停在钩尖处 */
+    @keyframes fish-bite{
+      0%{
+        opacity:0;
+        transform:translateX(-110px) translateY(30px) scale(0.8) rotate(-18deg);
+      }
+      40%{
+        opacity:1;
+        transform:translateX(-40px) translateY(-10px) scale(0.95) rotate(-8deg);
+      }
+      75%{
+        transform:translateX(-10px) translateY(0) scale(1.03) rotate(4deg);
+      }
+      100%{
+        opacity:1;
+        transform:translateX(0) translateY(0) scale(1) rotate(0deg);
+      }
+    }
+
+    /* ===================== 主页面样式 ===================== */
     body{
       min-height:100vh;
       font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
@@ -274,11 +196,10 @@
       justify-content:center;
       padding:24px;
       color:var(--text);
-      overflow:hidden;
+      overflow-x:hidden; /* 允许纵向滚轮 */
       position:relative;
     }
 
-    /* 动态背景 - 光波扩散 */
     .bg-waves{
       position:fixed;
       inset:0;
@@ -311,7 +232,6 @@
       100%{transform:rotate(360deg)}
     }
 
-    /* 粒子系统 */
     .particles{
       position:fixed;
       inset:0;
@@ -340,7 +260,6 @@
       }
     }
 
-    /* 光纤传输线 */
     .fiber-lines{
       position:fixed;
       inset:0;
@@ -381,7 +300,6 @@
       100%{left:100%}
     }
 
-    /* 数据流 */
     .data-stream{
       position:fixed;
       right:5%;
@@ -410,12 +328,7 @@
       max-width:1200px;
       position:relative;
       z-index:2;
-      opacity:0;
-      animation:content-fade-in 1s ease-out 4.5s forwards;
-    }
-    @keyframes content-fade-in{
-      0%{opacity:0;transform:scale(0.9) translateY(30px)}
-      100%{opacity:1;transform:scale(1) translateY(0)}
+      opacity:1;  /* 直接显示，避免跳过动画时延迟 */
     }
 
     header{
@@ -432,23 +345,6 @@
       background-clip:text;
       margin-bottom:12px;
       letter-spacing:0.05em;
-      animation:title-glow 3s ease-in-out infinite;
-      position:relative;
-    }
-    header h1::after{
-      content:'';
-      position:absolute;
-      bottom:-10px;
-      left:50%;
-      transform:translateX(-50%);
-      width:100px;
-      height:2px;
-      background:linear-gradient(90deg,transparent,var(--primary),transparent);
-      box-shadow:0 0 20px var(--primary-glow);
-    }
-    @keyframes title-glow{
-      0%,100%{filter:drop-shadow(0 0 10px var(--primary-glow))}
-      50%{filter:drop-shadow(0 0 25px var(--primary-glow))}
     }
     header p{
       font-size:16px;
@@ -466,11 +362,6 @@
       font-weight:600;
       margin-top:16px;
       box-shadow:0 0 20px rgba(0,212,255,0.3);
-      animation:tag-pulse 2s ease-in-out infinite;
-    }
-    @keyframes tag-pulse{
-      0%,100%{box-shadow:0 0 20px rgba(0,212,255,0.3)}
-      50%{box-shadow:0 0 35px rgba(0,212,255,0.6)}
     }
 
     .grid{
@@ -496,28 +387,9 @@
       color:inherit;
       position:relative;
       overflow:hidden;
-      transition:all 0.4s cubic-bezier(0.4,0,0.2,1);
-      opacity:0;
-      animation:tile-appear 0.8s ease-out 5s forwards;
-      animation-delay:calc(5s + var(--index) * 0.15s);
+      transition:all 0.3s cubic-bezier(0.4,0,0.2,1);
+      opacity:1;
     }
-    .tile:nth-child(1){--index:0}
-    .tile:nth-child(2){--index:1}
-    .tile:nth-child(3){--index:2}
-    .tile:nth-child(4){--index:3}
-    
-    @keyframes tile-appear{
-      0%{
-        opacity:0;
-        transform:translateY(50px) rotateX(20deg);
-      }
-      100%{
-        opacity:1;
-        transform:translateY(0) rotateX(0);
-      }
-    }
-
-    /* 悬浮光晕效果 */
     .tile::before{
       content:'';
       position:absolute;
@@ -533,31 +405,9 @@
     .tile:hover::before{
       opacity:1;
     }
-    .tile::after{
-      content:'';
-      position:absolute;
-      inset:-2px;
-      border-radius:20px;
-      padding:2px;
-      background:linear-gradient(135deg,var(--primary),var(--secondary));
-      -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite:xor;
-      mask-composite:exclude;
-      opacity:0;
-      transition:opacity 0.3s;
-    }
-    .tile:hover::after{
-      opacity:1;
-      animation:border-glow 2s linear infinite;
-    }
-    @keyframes border-glow{
-      0%{filter:hue-rotate(0deg)}
-      100%{filter:hue-rotate(360deg)}
-    }
-
     .tile:hover{
-      transform:translateY(-8px) scale(1.02);
-      box-shadow:0 30px 60px rgba(0,212,255,0.3);
+      transform:translateY(-6px) scale(1.01);
+      box-shadow:0 24px 50px rgba(0,212,255,0.26);
       border-color:var(--primary);
     }
 
@@ -577,11 +427,6 @@
     }
     .tile .badge::before{
       content:'●';
-      animation:blink 2s ease-in-out infinite;
-    }
-    @keyframes blink{
-      0%,100%{opacity:0.3}
-      50%{opacity:1}
     }
 
     .tile h2{
@@ -622,7 +467,6 @@
       box-shadow:0 0 20px var(--primary-glow);
     }
 
-    /* 扫描线效果 */
     .scan-line{
       position:absolute;
       width:100%;
@@ -644,47 +488,71 @@
 </head>
 <body>
   <!-- 开场动画层 -->
-  <div class="intro-overlay">
-    <!-- 太阳 -->
-    <div class="sun"></div>
-    
-    <!-- 光束 -->
-    <div class="light-beam beam1"></div>
-    <div class="light-beam beam2"></div>
-    <div class="light-beam beam3"></div>
-    
-    <!-- 光粒子 -->
-    <div class="light-particle particle1"></div>
-    <div class="light-particle particle2"></div>
-    <div class="light-particle particle3"></div>
-    
-    <!-- 中继节点 -->
-    <div class="relay relay1"></div>
-    <div class="relay relay2"></div>
-    
-    <!-- 路由器 -->
-    <div class="router">
-      <div class="router-body">
-        <div class="router-antenna"></div>
-        <div class="router-antenna"></div>
-        <div class="router-antenna"></div>
-        <div class="router-light"></div>
-        <div class="router-light"></div>
-        <div class="router-light"></div>
-      </div>
+  <div class="intro-overlay" id="introOverlay">
+    <div class="logo-scene">
+      <!-- SVG LOGO：鱼头朝右，嘴被鱼钩钩住 -->
+      <svg class="logo-svg" viewBox="0 0 200 200">
+        <!-- J 鱼钩主体：竖直向下再向左弯成 J -->
+        <path
+          class="hook-path"
+          d="M140 40
+             V120
+             a36 36 0 0 1 -72 0"
+        />
+        <!-- 顶部横杆 -->
+        <line
+          class="hook-top"
+          x1="110" y1="32" x2="170" y2="32"
+        />
+        <!-- 钩尖向上翘，伸进鱼嘴里 -->
+        <path
+          class="hook-barb"
+          d="M96 124
+             Q110 114 122 110"
+        />
+
+        <!-- 鱼剪影（头在右侧，朝向鱼钩，嘴位置大约在 (122,110)） -->
+        <g class="fish-group">
+          <!-- 身体外轮廓（白色实心） -->
+          <path
+            class="fish-body"
+            d="
+              M122 110
+              C104 94, 78 90, 56 102
+              C42 110, 36 120, 36 125
+              C36 130, 42 138, 56 146
+              C78 158,104 154,122 138
+              Z
+            "
+          />
+          <!-- 内部黑色花纹，做出“翻卷”的感觉 -->
+          <path
+            class="fish-inner"
+            d="
+              M118 110
+              C102 98, 80 98, 60 108
+              C50 114, 46 120, 46 124
+              C46 128, 50 134, 60 140
+              C80 150,102 150,118 138
+              C104 132,104 118,118 110
+              Z
+            "
+          />
+          <!-- 尾巴 -->
+          <polygon
+            class="fish-body"
+            points="56,124 30,108 30,140"
+          />
+          <!-- 眼睛 -->
+          <circle class="fish-eye-white" cx="98" cy="106" r="6" />
+          <circle class="fish-eye-black" cx="98" cy="106" r="3" />
+        </g>
+      </svg>
     </div>
-    
-    <!-- 最终爆发 -->
-    <div class="final-burst">
-      <div class="burst-ray"></div>
-      <div class="burst-ray"></div>
-      <div class="burst-ray"></div>
-      <div class="burst-ray"></div>
-      <div class="burst-ray"></div>
-      <div class="burst-ray"></div>
-      <div class="burst-ray"></div>
-      <div class="burst-ray"></div>
-    </div>
+
+    <button class="skip-intro-btn" id="skipIntroBtn">
+      跳过动画 · 进入页面
+    </button>
   </div>
 
   <!-- 背景光波 -->
@@ -763,11 +631,25 @@
         </div>
         <div class="scan-line"></div>
       </a>
+
+      <!-- 功能⑤ · OB 设计台账处理工具 -->
+      <a class="tile" href="OBinput.html" target="_blank" rel="noopener">
+        <span class="badge">功能 ⑤ · OB 设计台账</span>
+        <div>
+          <h2>OB设计台账处理工具</h2>
+          <p>读取 OB 设计台账 / 请购单 Excel，自动拆分短文本并生成标准化 7 列结果表，支持一键输出「需求人 / 制程段 / 上线日期 / 使用设备型号 / 治具详细信息 / 需求数量 / 设计人员」。</p>
+        </div>
+        <div class="tile-footer">
+          <span>点击打开工具</span>
+          <span class="icon">➜</span>
+        </div>
+        <div class="scan-line"></div>
+      </a>
     </section>
   </div>
 
   <script>
-    // 生成粒子
+    // 背景粒子
     const particlesContainer = document.getElementById('particles');
     for(let i=0;i<30;i++){
       const p = document.createElement('div');
@@ -779,7 +661,7 @@
       particlesContainer.appendChild(p);
     }
 
-    // 生成光纤线
+    // 背景光纤线
     const fibersContainer = document.getElementById('fibers');
     for(let i=0;i<8;i++){
       const f = document.createElement('div');
@@ -788,12 +670,10 @@
       f.style.width = (30+Math.random()*40)+'%';
       f.style.left = Math.random()*50+'%';
       f.style.animationDelay = Math.random()*3+'s';
-      const travel = f.querySelector('::before') || f;
-      if(travel.style) travel.style.animationDelay = Math.random()*2+'s';
       fibersContainer.appendChild(f);
     }
 
-    // 生成二进制数据流
+    // 二进制数据流
     const binaryEl = document.getElementById('binary');
     let binaryText = '';
     for(let i=0;i<200;i++){
@@ -801,7 +681,7 @@
     }
     binaryEl.textContent = binaryText + '\n' + binaryText;
 
-    // 鼠标跟踪光晕效果
+    // 卡片上的鼠标光晕
     document.querySelectorAll('.tile').forEach(tile=>{
       tile.addEventListener('mousemove',e=>{
         const rect = tile.getBoundingClientRect();
@@ -811,6 +691,29 @@
         tile.style.setProperty('--mouse-y',y+'%');
       });
     });
+
+    // ===== 开场动画跳过逻辑：点击任意位置 / 按钮都立即进入 =====
+    const introOverlay = document.getElementById('introOverlay');
+    const skipBtn = document.getElementById('skipIntroBtn');
+
+    function skipIntro(){
+      if(!introOverlay || introOverlay.__skipped) return;
+      introOverlay.__skipped = true;
+      introOverlay.style.display = 'none'; // 立刻隐藏
+    }
+
+    if(skipBtn){
+      skipBtn.addEventListener('click', e=>{
+        e.stopPropagation();
+        skipIntro();
+      });
+    }
+
+    document.addEventListener('click', ()=>{
+      if(introOverlay && introOverlay.style.display !== 'none'){
+        skipIntro();
+      }
+    }, true);
   </script>
 </body>
 </html>
